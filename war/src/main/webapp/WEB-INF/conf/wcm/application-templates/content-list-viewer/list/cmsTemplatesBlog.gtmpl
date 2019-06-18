@@ -1,11 +1,4 @@
 <%
-	 /**
-	 	* Created by The eXo Platform SAS
-	 	* Author : eXoPlatform
-	 	*          benjamin.paillereau@exoplatform.com
-	 	* Aug 27, 2009
-	 	*/
-
 	 	import javax.jcr.Node;
 
 	 	import org.exoplatform.wcm.webui.paginator.UICustomizeablePaginator;
@@ -103,8 +96,12 @@
 
 	 			%>
 	 			<%=uicomponent.addQuickEditDiv("Column1 media " + ((i%2==1)?"odd":"even"),, viewNode)%>
-	 			<div class="clearfix">
-	 				<div class="badge"><p><time datetime="2013-01-01">$itemCreatedDay</time></p><p class="numb">$itemCreatedMonth</p></div>
+	 			<div class="clearfix blogTitle">
+	 				<div class="badge">
+	 				<p class="blogDate">
+	 					<span><time datetime="2013-01-01">$itemCreatedDay</time></span><span class="numb">$itemCreatedMonth</span>
+	 				</p>
+	 				</div>
 	 				<div class="extra-wrap">
 	 					<%
 
@@ -138,18 +135,20 @@
 				 			}
 
 				 			%>
-			 			<div class="clearfix">
- 							<p>Posted by&nbsp;</p><a class="pull-left" href="#">$itemOwner</a><a class="pull-right" href="#">$commentCount Comment(s)</a>
-			 			</div>
-	 				</div>
-	 			</div>
+			 	<div class="blogInformations">
+ 							<p class="blogAuthor"><i class="uiIconProfile uiIconDefaultApp"></i> <span>Posted by:&nbsp;</span> <a href="#">$itemOwner</a></p>
+ 							<p class="blogNbrComments"><i class="uiIconAppforum uiIconAppForumPortlet uiIconDefaultApp"></i> <a href="#">$commentCount Comment(s)</a></p>
+			 	</div>
+
+				 		</div>
+				 	</div>
 	 			<div class="media-inner">
 	 			<%
 	 			if (isShowImage) {
-	 				%><a class="image pull-left img-polaroid" title="$itemName"><img alt="$itemName" rel="tooltip" data-placement="bottom" title="$itemName" src="$imgSrc" /></a><%
+	 				%><div class="blogImage"><a class="image pull-left img-polaroid" title="$itemName"><img alt="$itemName" rel="tooltip" data-placement="bottom" title="$itemName" src="$imgSrc" /></a></div><%
 	 			}
 	 			%>
-	 			<i  class="$itemIcon image pull-left"></i>
+	 			
 	 			<div class="media-body">
 
 
@@ -174,7 +173,16 @@
 	 			if (isShowReadmore) {
 	 				%>
 
-	 				<div class="readLink"><a class="btn btn-primary" href="$itemLink" rel="tooltip" data-placement="bottom" title="<%= _ctx.appRes("UICLVPresentation.label.readmore") %>"><%= _ctx.appRes("UICLVPresentation.label.readmore") %></a></div><%
+	 				<div class="readLink blog-read-more">
+	 				<a class="blog-button" href="$itemLink" rel="tooltip" data-placement="bottom" title="<%= _ctx.appRes("UICLVPresentation.label.readmore") %>">
+	 				<span><%= _ctx.appRes("UICLVPresentation.label.readmore") %></span>
+	 				<svg width="13px" height="10px" viewBox="0 0 13 10">
+					    <path d="M1,5 L11,5"></path>
+					    <polyline points="8 1 12 5 8 9"></polyline>
+  					</svg>
+	 				</a>
+
+	 				</div><%
 	 			}
 	 			%>
 	 			</div><!--media-body-->
