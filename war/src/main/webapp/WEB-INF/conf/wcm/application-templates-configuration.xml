@@ -94,6 +94,21 @@
 					</object>
 				</object-param>
 				<object-param>
+					<name>Important Links Template</name>
+					<object
+						type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
+						<field name="title">
+							<string>CMS Links List Template</string>
+						</field>
+						<field name="templateName">
+							<string>ImportantLinks.gtmpl</string>
+						</field>
+						<field name="category">
+							<string>list</string>
+						</field>
+					</object>
+				</object-param>
+				<object-param>
           <name>Blog Archives</name>
           <description>Blog Archives</description>
           <object type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
