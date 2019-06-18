@@ -1,0 +1,268 @@
+<%
+    import javax.jcr.Node;
+    import org.exoplatform.wcm.webui.paginator.UICustomizeablePaginator;
+    import org.exoplatform.wcm.webui.clv.UICLVPortlet;
+    import org.exoplatform.wcm.webui.Utils;
+    import org.exoplatform.services.wcm.core.NodeLocation;
+    import java.util.Calendar;
+    import java.util.Collections;
+    import java.util.Comparator;
+    import javax.jcr.Node;
+%>
+
+<script>
+require( ["SHARED/jquery", "SHARED/bootstrap", "SHARED/bts_carousel" ], function(jQuery){
+	   jQuery(document).ready(function () {
+		   jQuery('.carousel').carousel({
+			   interval: 10000
+			  });
+	
+	   });
+	   
+	   });
+
+</script>
+
+<style>
+
+   <%
+
+   def currentPageDataelement = uicomponent.getCurrentPageData();
+   def eventsAlaUne = new ArrayList();
+              for (viewNode in currentPageDataelement) {
+                   if (viewNode.hasProperty("aerov:referenceDate")&& Utils.isViewable(viewNode)) {
+                      eventsAlaUne.add(viewNode);
+                      }
+                    }
+                    Collections.sort(eventsAlaUne, new Comparator<Node>() {
+                    @Override
+                    public int compare(Node o1, Node o2) {
+                       //return o1.getProperty("aerov:referenceDate").getDate().compareTo(o2.getProperty("aerov:referenceDate").getDate());
+                       return o2.getProperty("aerov:referenceDate").getDate().compareTo(o1.getProperty("aerov:referenceDate").getDate());
+                     }
+                  });
+%>
+
+#eventAlAUne .carousel-caption p{
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 1; /* number of lines to show */
+  /* max-width: 200px  ;*/
+}
+
+#eventAlAUne .carousel-caption p:nth-child(1)  {
+    color: #2E4055;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 19px;
+
+}
+
+#eventAlAUne .carousel-caption p:nth-child(2)  {
+    color: #2E4055;
+    font-size: 14px;
+    line-height: 19px;
+ 
+
+}
+
+.voirTousEvents {
+    position: relative;
+    padding: 4px;
+    margin-right: 9px;
+    bottom: 47px;
+    float: right;
+    color: #2E4055;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #435569;
+    cursor: pointer;
+}
+
+.imgContainerOption2 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+}
+
+
+#eventAlAUne .carousel-caption {
+    position: absolute !important;
+}
+
+#eventAlAUne .carousel-indicators li {
+    width: 8px;
+    height: 8px;
+    background-color: #405266;
+    cursor: pointer;
+}
+
+
+#eventAlAUne .carousel-indicators {
+    position: absolute;
+    top: 94%;
+    right: 50%;
+}
+
+#eventAlAUne .carousel-indicators .active {
+    background-color: #fdc228;
+}
+
+  #eventAlAUne .slider-size {
+    height: 300px; //This is your slider height
+    width: 500px;
+  }
+  .slider-size {
+height: 400px; /* This is your slider height */
+}
+#eventAlAUne .carousel {
+width:100%; 
+margin:0 auto; /* center your carousel if other than 100% */ 
+}
+
+#eventAlAUne .carousel-control {
+    background: black;
+    border: none;
+}
+
+
+#eventAlAUne .carousel-caption {
+  background: #f4f9fb;
+  bottom:-60px; 
+  height: 20%;
+  display:inline-block;
+ }
+#eventAlAUne .carousel-inner { padding-bottom:60px; }
+#eventAlAUne .carousel-caption p {
+    color: #2E4055;
+    line-height: 20px;
+}
+
+@media (max-width: 460px) {
+.voirTousEvents {
+    position: relative;
+    padding: 4px;
+    bottom: 24px;
+    color: #2E4055;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 13px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #435569;
+    cursor: pointer;
+    float:none;
+    margin-right: 0;
+}
+
+#eventAlAUne .carousel-indicators {
+    position: absolute;
+    top: 84%;
+    right: 50%;
+
+
+}
+}
+  
+</style>
+
+
+
+<div id="eventAlAUne" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+   <%
+  def j =0;
+  
+              for (viewNode in eventsAlaUne) {
+                if(!Utils.isViewable(viewNode)) continue;
+                j++;
+                if(j==7)
+                break;
+                %>
+                <% if (j==1){ %>
+    <li data-target="#eventAlAUne" data-slide-to="${j-1}" class="active"></li>
+    <% }else{ %>
+      <li data-target="#eventAlAUne" data-slide-to="${j-1 }" class=""></li>
+     <%} %>
+<%}%>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+  <%
+  def i =0;
+  
+              for (viewNode in eventsAlaUne) {
+                if(!Utils.isViewable(viewNode)) continue;
+                i++;
+                if(i==7)
+                break;
+                def style = "";
+                def isShowTitle = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_TITLE);
+                def isShowDate = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_DATE_CREATED);
+                def isShowLink = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_LINK);
+                def isShowReadmore = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_READMORE);
+
+                def itemLink = uicomponent.getURL(viewNode);
+                def itemDateCreated = uicomponent.getCreatedDate(viewNode);
+                def itemOwner = uicomponent.getAuthor(viewNode);
+
+                def imgSrc = uicomponent.getIllustrativeImage(viewNode);
+                def isShowImage = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_ILLUSTRATION) && imgSrc != null;
+
+                def itemName = viewNode.getName();
+                def itemTitle = uicomponent.getTitle(viewNode);
+                if (itemTitle != null && itemTitle.trim().length() != 0)
+                  itemName = itemTitle;
+                def articleSubtitle = "";
+                if (viewNode.hasProperty("aerov:subtitle")) {
+                articleSubtitle = viewNode.getProperty("aerov:subtitle").getString();
+                    }
+                def itemSummary = uicomponent.getSummary(viewNode);
+                def itemSummaryField = uicomponent.getSummaryField(viewNode);
+                def isShowSummary = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_SUMMARY) && itemSummary != null;
+
+                %>
+  
+   <% if (i==1){ %>
+    <div class="active item">
+    <% }else{ %>
+     <div class="item">
+     <%} %>
+     <div>
+      <div style="background:url($imgSrc) center center; background-size:100% 100%;" class="slider-size imgContainerOption2"> 
+      <div class="carousel-caption">
+      <% if (itemTitle!=null) {%>
+						<p onclick="location.href='$itemLink';" style="cursor: pointer;">$itemTitle</p>
+		<%}%>
+	<% if (isShowSummary!=null) {%>
+						<p  style="cursor: pointer;">$itemSummary</p>
+		<%}%>
+					
+                    
+      </div>
+      </div>
+      </div>
+    </div>
+
+              <%
+              }
+              %>
+
+  </div>
+<p class="voirTousEvents" onclick="window.open('/portal/intranet/allList');" style="width: 10% !important;">Voir tout</p>
+  <!-- Controls -->
+  <a class="left carousel-control" href="javascript:void(0)" data-slide="prev" data-target="#eventAlAUne">‹</a>
+  <a class="right carousel-control" href="javascript:void(0)" data-slide="next" data-target="#eventAlAUne">›</a>
+</div>
+</div>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2009 eXo Platform SAS. This is free software; you can 
+	redistribute it and/or modify it under the terms of the GNU Lesser General 
+	Public License as published by the Free Software Foundation; either version 
+	2.1 of the License, or (at your option) any later version. This software 
+	is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+	PURPOSE. See the GNU Lesser General Public License for more details. You 
+	should have received a copy of the GNU Lesser General Public License along 
+	with this software; if not, write to the Free Software Foundation, Inc., 
+	51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA, or see the FSF site: 
+	http://www.fsf.org. -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.gatein.org/xml/ns/gatein_objects_1_6 http://www.gatein.org/xml/ns/gatein_objects_1_6"
+	xmlns="http://www.gatein.org/xml/ns/gatein_objects_1_6">
+	<name>page950326220</name>
+      <title>templateAerospace</title>
+      <access-permissions>*:/platform/users</access-permissions>
+      <edit-permission>*:/platform/administrators</edit-permission>
+      <show-max-window>false</show-max-window>
+      <container id="667004941" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+         <access-permissions>Everyone</access-permissions>
+         <container id="1199492425" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+            <access-permissions>Everyone</access-permissions>
+            <portlet-application>
+               <portlet>
+                  <application-ref>agital-template</application-ref>
+                  <portlet-ref>ImageSliderPortlet</portlet-ref>
+                  <preferences>
+                     <preference>
+                        <name>showSummary</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>orderType</name>
+                        <value>DESC</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>formViewTemplatePath</name>
+                        <value>/exo:ecm/views/templates/content-list-viewer/list/events.gtmpl</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>sharedCache</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showReadmore</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showHeader</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showScvWith</name>
+                        <value>content-id</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>orderBy</name>
+                        <value>publication:liveDate</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showThumbnailsView</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>nodeDrive</name>
+                        <value>Managed Sites</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>mode</name>
+                        <value>AutoViewerMode</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>folderPath</name>
+                        <value>repository:collaboration:/sites/intranet/web contents/evenements-a-la-une</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showRssLink</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showRefreshButton</name>
+                        <value>false</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>basePath</name>
+                        <value>detail</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>itemsPerPage</name>
+                        <value>10</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showTitle</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showClvBy</name>
+                        <value>folder-id</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>header</name>
+                        <value>évenements à la une</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>contextualFolder</name>
+                        <value>contextualDisable</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showDateCreated</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>showLink</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>automaticDetection</name>
+                        <value>true</value>
+                        <read-only>false</read-only>
+                     </preference>
+                     <preference>
+                        <name>paginatorTemplatePath</name>
+                        <value>/exo:ecm/views/templates/content-list-viewer/paginators/DefaultPaginator.gtmpl</value>
+                        <read-only>false</read-only>
+                     </preference>
+                  </preferences>
+               </portlet>
+               <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
+               <access-permissions>*:/platform/users</access-permissions>
+               <show-info-bar>false</show-info-bar>
+               <show-application-state>true</show-application-state>
+               <show-application-mode>true</show-application-mode>
+               <description></description>
+            </portlet-application>
+         </container>
+         <container id="1161422794" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+            <access-permissions>Everyone</access-permissions>
+            <container id="1291760387" template="system:/groovy/portal/webui/container/UITableColumnContainer.gtmpl">
+               <access-permissions>Everyone</access-permissions>
+               <factory-id>TableColumnContainer</factory-id>
+               <container id="1556542741" template="system:/groovy/portal/webui/container/UIColumnContainer.gtmpl" width="70%" height="100%">
+                  <access-permissions>Everyone</access-permissions>
+                  <factory-id>ColumnContainer</factory-id>
+                  <portlet-application>
+                     <portlet>
+                        <application-ref>social-portlet</application-ref>
+                        <portlet-ref>UserActivityStreamPortlet</portlet-ref>
+                     </portlet>
+                     <theme>Vista:VistaTheme::Enterprise:DefaultTheme::Default:DefaultTheme::Mac:MacTheme</theme>
+                     <access-permissions>*:/platform/users</access-permissions>
+                     <show-info-bar>false</show-info-bar>
+                     <show-application-state>true</show-application-state>
+                     <show-application-mode>true</show-application-mode>
+                     <description>User Activity Stream Portlet</description>
+                     <icon>PortletIcon</icon>
+                  </portlet-application>
+               </container>
+               <container id="113095890" template="system:/groovy/portal/webui/container/UIColumnContainer.gtmpl">
+                  <access-permissions>Everyone</access-permissions>
+                  <factory-id>ColumnContainer</factory-id>
+                  <container id="1444233567" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+                     <access-permissions>Everyone</access-permissions>
+                     <container id="586504768" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+                        <access-permissions>Everyone</access-permissions>
+                        <gadget-application>
+                           <gadget>
+                              <gadget-ref>FriendSuggestion</gadget-ref>
+                           </gadget>
+                           <theme>Vista:VistaTheme::Enterprise:DefaultTheme::Default:DefaultTheme::Mac:MacTheme</theme>
+                           <title>Friend Suggestions</title>
+                           <access-permissions>*:/platform/users</access-permissions>
+                           <show-info-bar>false</show-info-bar>
+                           <show-application-state>false</show-application-state>
+                           <show-application-mode>false</show-application-mode>
+                           <description>Friend Suggestions</description>
+                           <icon>PortletIcon</icon>
+                        </gadget-application>
+                     </container>
+                     <container id="1451982946" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+                        <access-permissions>Everyone</access-permissions>
+                        <gadget-application>
+                           <gadget>
+                              <gadget-ref>Invitations</gadget-ref>
+                           </gadget>
+                           <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
+                           <title>Invitations</title>
+                           <access-permissions>*:/platform/users</access-permissions>
+                           <show-info-bar>false</show-info-bar>
+                           <show-application-state>true</show-application-state>
+                           <show-application-mode>true</show-application-mode>
+                           <description>Invitations</description>
+                        </gadget-application>
+                     </container>
+                  </container>
+               </container>
+            </container>
+         </container>
+      </container>
+</page>

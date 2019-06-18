@@ -1,0 +1,527 @@
+<%
+    import javax.jcr.Node;
+    import org.exoplatform.wcm.webui.paginator.UICustomizeablePaginator;
+    import org.exoplatform.wcm.webui.clv.UICLVPortlet;
+    import org.exoplatform.wcm.webui.Utils;
+    import org.exoplatform.services.wcm.core.NodeLocation;
+%>
+
+<script>
+
+	require(['SHARED/jquery', 'SHARED/dotdotdot'], function (jQuery, dotdotdot) {
+		jQuery(document).ready(function () {
+			jQuery(".contentTitle").dotdotdot();
+			jQuery(".contentBodyText").dotdotdot();
+			jQuery(".rightTitle").dotdotdot();
+			jQuery(".rightBody").dotdotdot();
+		});
+
+		jQuery(window).resize(function () {
+			jQuery(".contentTitle").dotdotdot();
+			jQuery(".contentBodyText").dotdotdot();
+			jQuery(".rightTitle").dotdotdot();
+			jQuery(".rightBody").dotdotdot();
+		})
+	});
+</script>
+
+
+<style>
+	#OfficeMiddleActualites .content a {
+		color: black;
+	}
+
+	#OfficeMiddleActualites .content a:hover,
+	#OfficeMiddleActualites .content a:focus {
+		color: #3361af;
+	}
+
+	#OfficeMiddleActualites .content .contentLeft .backgroundLeft {
+		background-size: 100% 100%;
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+	}
+
+	#OfficeMiddleActualites .content .contentLeft .backgroundLeft .overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.7;
+		top: 0px;
+		left: 0px;
+		background-color: #FFFFFF;
+	}
+
+	#OfficeMiddleActualites .content .contentLeft img {
+		display: block;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+
+	#OfficeMiddleActualites .content .contentRight .image {
+		background-size: 100% 100%;
+		content: "";
+		position: relative;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+	}
+
+	#OfficeMiddleActualites .content .contentRight .image .overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		opacity: 0.7;
+		top: 0px;
+		left: 0px;
+		background-color: #FFFFFF;
+	}
+
+	#OfficeMiddleActualites .content .contentRight .image img {
+		display: block;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		max-height: 100%;
+	}
+
+	@media (max-width: 1024px) {
+		#OfficeMiddleActualites {
+			height: 225px;
+			padding: 0px;
+			margin-bottom: 50px;
+		}
+
+		#OfficeMiddleActualites .title {
+			font-size: 15px;
+			padding-left: 10px;
+			padding-top: 2px;
+			padding-bottom: 2px;
+			margin-bottom: 0px;
+			width: 188px;
+			color: #000000;
+			font-weight: 600;
+			line-height: 25px;
+		}
+
+		#OfficeMiddleActualites .contentLeft,
+		#OfficeMiddleActualites .contentRight {
+			display: inline-block;
+		}
+
+		#OfficeMiddleActualites .content {
+			position: relative;
+			text-align: center;
+			height: 156px;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft {
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+			color: white;
+			font-size: 15px;
+			line-height: 25px;
+			position: relative;
+			height: 100%;
+			width: 96%;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft img {
+			max-height: 156px;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText {
+			position: absolute;
+			left: 0;
+			max-width: 100%;
+			text-align: left;
+			font-size: 14px;
+			margin: 0px;
+			bottom: -38px;
+			line-height: 17px;
+			overflow: hidden;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText .contentTitle {
+			max-height: 25px;
+			font-weight: bold;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText .contentBody {
+			max-height: 17px;
+			width: 100%;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText .contentBody .contentBodyText {
+			max-width: 80%;
+			max-height: 25px;
+			display: inline-block;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText .contentBody .more {
+			margin-left: 5px;
+		}
+
+		#OfficeMiddleActualites .content .contentRight {
+			width: 45%;
+			height: 100%;
+			position: absolute;
+			right: 0px;
+			color: black;
+			display: none;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line {
+			height: 96px;
+			margin-left: 22px;
+			margin-bottom: 25px;
+			position: relative;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line .image {
+			display: inline-block;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+			width: 30%;
+			height: 100%;
+			margin-right: 12px;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line .rightText {
+			display: inline-block;
+			position: absolute;
+			top: 0px;
+			font-size: 14px;
+			max-width: 100%;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line .rightText .rightTitle {
+			font-weight: bold;
+			max-height: 40px;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line .rightText .rightBody {
+			max-height: 40px;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line:last-child {
+			margin-bottom: 0px;
+			height: 97px;
+		}
+	}
+
+	@media (min-width: 1025px) {
+		#OfficeMiddleActualites {
+			margin-bottom: 50px;
+			padding: 10px;
+		}
+
+		#OfficeMiddleActualites .title {
+			width: 188px;
+			font-size: 17px;
+			font-weight: 600;
+			line-height: 25px;
+			margin-bottom: 17px;
+		}
+
+		#OfficeMiddleActualites .contentLeft,
+		#OfficeMiddleActualites .contentRight {
+			display: inline-block;
+		}
+
+		#OfficeMiddleActualites .content {
+			height: 339px;
+			position: relative;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft {
+			width: 55%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+			color: white;
+			font-size: 15px;
+			line-height: 25px;
+			position: relative;
+			height: 100%;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft img {
+			max-height: 339px;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .ombre {
+			box-shadow: 0 -220px 100px -100px rgba(0, 0, 0, 0.75) inset;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			position: absolute;
+			z-index: 1;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			margin-left: 14px;
+			margin-right: 50px;
+			margin-bottom: 11px;
+			margin-top: 295px;
+			max-width: 100%;
+			z-index: 2;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText .contentTitle {
+			max-height: 25px;
+			font-weight: bold;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText .contentBody {
+			max-height: 25px;
+			width: 100%;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText .contentBody .contentBodyText {
+			max-width: 80%;
+			max-height: 25px;
+			display: inline-block;
+		}
+
+		#OfficeMiddleActualites .content .contentLeft .contentText .contentBody .more {
+			margin-left: 5px;
+			width: 10%;
+		}
+
+		#OfficeMiddleActualites .content .contentRight {
+			width: 45%;
+			height: 100%;
+			position: absolute;
+			right: 0px;
+			color: black;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line {
+			height: 96px;
+			margin-left: 22px;
+			margin-bottom: 25px;
+			position: relative;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line .image {
+			display: inline-block;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+			width: 30%;
+			height: 100%;
+			margin-right: 12px;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line .rightText {
+			display: inline-block;
+			position: absolute;
+			top: 0px;
+			font-size: 14px;
+			max-width: 100%;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line .rightText .rightTitle {
+			font-weight: bold;
+			max-height: 40px;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line .rightText .rightBody {
+			max-height: 40px;
+		}
+
+		#OfficeMiddleActualites .content .contentRight .line:last-child {
+			margin-bottom: 0px;
+			height: 97px;
+		}
+	}
+	.voirTout {
+    padding: 4px;
+    margin-right: 9px;
+    bottom: 47px;
+    color: #2E4055;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #435569;
+    cursor: pointer;
+}
+.imgContainerOption2 {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+</style>
+<%
+def header = uicomponent.getHeader();
+def isShowHeader = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_HEADER) && header != null && header.trim().length() != 0;
+
+%>
+<div id="OfficeMiddleActualites">
+	
+	<div style="display: inline-block; height: 45px; width: 100%">
+		<% if (isShowHeader) { %>
+		<div class="title" style="display:flex; float:left;">
+		$header
+		</div>
+		<% } %>
+
+		<div style="padding-left: 90%;width: 10% !important;">
+			<p class="voirTout" onclick="window.open('/portal/intranet/allList');">Voir tout</p>
+		</div>
+
+	</div>
+	
+	
+		
+	
+	<div class="content">
+
+		<%
+if (uicomponent.getUIPageIterator().getAvailable() == 0) {
+%>
+		<div class="emptyContent">
+			<span><%= _ctx.appRes(uicomponent.getParent().getMessageKey()) %></span>
+		</div>
+		<%
+} else {
+  def currentPageData = uicomponent.getCurrentPageData();
+  def nodes = new ArrayList();
+    for (viewNode in currentPageData) {
+        if(!Utils.isViewable(viewNode)) continue;
+        nodes.add(viewNode);           
+    }
+
+  def style = "";
+  def isShowTitle = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_TITLE);
+  def isShowDate = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_DATE_CREATED);
+  def isShowLink = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_LINK);
+  def isShowReadmore = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_READMORE);
+
+def itemLink_0 = uicomponent.getURL(nodes.get(0));
+def itemDateCreated_0 = uicomponent.getCreatedDate(nodes.get(0));
+def itemOwner_0 = uicomponent.getAuthor(nodes.get(0));
+
+def imgSrc_0 = uicomponent.getIllustrativeImage(nodes.get(0));
+def isShowImage_0 = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_ILLUSTRATION) && imgSrc_0 != null;
+
+def itemName_0 = nodes.get(0).getName();
+def itemTitle_0 = uicomponent.getTitle(nodes.get(0));
+if (itemTitle_0 != null && itemTitle_0.trim().length() != 0)
+  itemName_0 = itemTitle_0;
+def itemSummary_0 = uicomponent.getSummary(nodes.get(0));
+def itemSummaryField_0 = uicomponent.getSummaryField(nodes.get(0));
+def isShowSummary_0 = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_SUMMARY) && itemSummary_0 != null;
+
+    %>
+
+		<div class="contentLeft">
+
+			<div class="backgroundLeft" style="background-image:url($imgSrc_0)">
+				<div class="overlay"></div>
+			</div>
+
+			<div class="ombre">
+			</div>
+			<img class="imgContainerOption2" src="$imgSrc_0" />
+			<div class="contentText">
+				<div class="contentTitle">
+					<a href="$itemLink_0">$itemTitle_0</a>
+				</div>
+				<div class="contentBody">
+					<div class="contentBodyText">
+						$itemSummary_0
+					</div>
+					<% if (isShowReadmore) { %>
+					<span class="more">
+						<a href="$itemLink_0">Lire la suite</a>
+					</span>
+					<% } %>
+
+				</div>
+			</div>
+		</div>
+		<div class="contentRight">
+			<% for (int i=1;i<nodes.size();i++) { 
+def viewNode = nodes.get(i);
+        def itemLink = uicomponent.getURL(viewNode);
+        def itemDateCreated = uicomponent.getCreatedDate(viewNode);
+        def itemOwner = uicomponent.getAuthor(viewNode);
+
+        def imgSrc = uicomponent.getIllustrativeImage(viewNode);
+        def isShowImage = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_ILLUSTRATION) && imgSrc != null;
+
+        def itemName = viewNode.getName();
+        def itemTitle = uicomponent.getTitle(viewNode);
+          if (itemTitle != null && itemTitle.trim().length() != 0)
+            itemName = itemTitle;
+        def itemSummary = uicomponent.getSummary(viewNode);
+        def itemSummaryField = uicomponent.getSummaryField(viewNode);
+        def isShowSummary = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_SUMMARY) && itemSummary != null;
+
+
+
+      %>
+
+			<div class="line">
+				<div class="image" style="background-image:url($imgSrc)">
+					<div class="overlay"></div>
+					<img class="imgContainerOption2" src="$imgSrc" />
+				</div>
+				<div class="rightText">
+
+					<div class="rightTitle">
+						<a href="$itemLink">$itemTitle</a>
+					</div>
+
+					<div class="rightBody">
+						$itemSummary
+					</div>
+					<% if (isShowReadmore) { %>
+					<div class="rightMore">
+						<a href="$itemLink">Lire la suite</a>
+
+					</div>
+					<% } %>
+
+				</div>
+
+			</div>
+
+			<% 
+    }
+
+%>
+		</div>
+
+		<% 
+    
+  }
+
+%>
+	</div>
+</div>

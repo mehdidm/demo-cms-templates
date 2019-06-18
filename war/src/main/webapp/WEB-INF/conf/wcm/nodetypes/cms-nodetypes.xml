@@ -1,0 +1,14 @@
+<nodeTypes xmlns:nt="http://www.jcp.org/jcr/nt/1.5" xmlns:mix="http://www.jcp.org/jcr/mix/1.5" xmlns:jcr="http://www.jcp.org/jcr/1.5" >
+	
+  <nodeType name="exo:dnblog" isMixin="false" hasOrderableChildNodes="false" primaryItemName="" >
+    <supertypes>
+      <supertype>exo:webContent</supertype>
+    </supertypes>
+  </nodeType> 
+
+  <nodeType name="exo:dnblogFolder" isMixin="false" hasOrderableChildNodes="false" primaryItemName="">
+    <supertypes>
+      <supertype>nt:unstructured</supertype>
+    </supertypes>
+  </nodeType>
+</nodeTypes>
