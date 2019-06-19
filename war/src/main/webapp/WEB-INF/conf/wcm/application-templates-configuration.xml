@@ -138,6 +138,21 @@
             </field>
           </object>
         </object-param>
+        <object-param>
+          <name>Display Two Columns</name>
+          <description>Display Two Columns</description>
+          <object type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
+            <field name="title">
+              <string>Display Two Columns</string>
+            </field>
+            <field name="templateName">
+              <string>DisplayTwoColumns.gtmpl</string>
+            </field>
+            <field name="category">
+              <string>list</string>
+            </field>
+          </object>
+        </object-param>
 			</init-params>
 		</component-plugin>
 	</external-component-plugins>

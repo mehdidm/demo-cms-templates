@@ -375,6 +375,27 @@
     background-size: cover;
     background-position: center center;
 }
+
+.overflow {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+width: 300px;
+}
+
+.rightBody p {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+width: 300px;
+}
+
+.contentBodyText p {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+width: 300px;
+}
 </style>
 <%
 def header = uicomponent.getHeader();
@@ -452,13 +473,13 @@ def isShowSummary_0 = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_SUMMA
 				<div class="contentTitle">
 					<a href="$itemLink_0">$itemTitle_0</a>
 				</div>
-				<div class="contentBody">
-					<div class="contentBodyText">
+				<div class="contentBody" style="padding-bottom: 20px;">
+					<div class="contentBodyText" >
 						$itemSummary_0
 					</div>
 					<% if (isShowReadmore) { %>
-					<span class="more">
-						<a href="$itemLink_0">Lire la suite</a>
+					<span class="more" >
+						<a href="$itemLink_0" style="color: #3361af !important;">Lire la suite</a>
 					</span>
 					<% } %>
 
@@ -498,12 +519,12 @@ def viewNode = nodes.get(i);
 						<a href="$itemLink">$itemTitle</a>
 					</div>
 
-					<div class="rightBody">
+					<div class="rightBody overflow">
 						$itemSummary
 					</div>
 					<% if (isShowReadmore) { %>
-					<div class="rightMore">
-						<a href="$itemLink">Lire la suite</a>
+					<div class="rightMore" style="padding-top:9px;">
+						<a href="$itemLink" style="color: #3361af !important;">Lire la suite</a>
 
 					</div>
 					<% } %>

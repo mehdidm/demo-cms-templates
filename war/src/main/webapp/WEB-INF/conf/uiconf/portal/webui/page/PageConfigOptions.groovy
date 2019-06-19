@@ -31,6 +31,8 @@ normalPageConfigs.addSelectItemOption(new SelectItemOption("normalPage.Dashboard
 normalPageConfigs.addSelectItemOption(new SelectItemOption("Sample Layout", "sample", "SampleLayout"));
 normalPageConfigs.addSelectItemOption(new SelectItemOption("Blog Layout", "blog", "BlogLayout"));
 normalPageConfigs.addSelectItemOption(new SelectItemOption("HomePage Layout 1", "pageHome1", "homePage1Layout"));
+normalPageConfigs.addSelectItemOption(new SelectItemOption("HomePage Layout 2", "pageHome2", "homePage2Layout"));
+normalPageConfigs.addSelectItemOption(new SelectItemOption("HomePage Layout 3", "pageHome3", "homePage3Layout"));
 
 SelectItemCategory columnPageConfigs = new SelectItemCategory("columnPageConfigs") ;
 categories.add(columnPageConfigs);  
