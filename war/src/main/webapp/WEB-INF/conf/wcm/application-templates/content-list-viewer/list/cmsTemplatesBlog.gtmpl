@@ -96,7 +96,16 @@
 
 	 			%>
 	 			<%=uicomponent.addQuickEditDiv("Column1 media " + ((i%2==1)?"odd":"even"),, viewNode)%>
-	 			<div class="clearfix blogTitle">
+
+	 			<div class="media-inner">
+	 			<%
+	 			if (isShowImage) {
+	 				%><div class="blogImage"><a class="image pull-left img-polaroid" title="$itemName"><img alt="$itemName" rel="tooltip" data-placement="bottom" title="$itemName" src="$imgSrc" /></a></div><%
+	 			}
+	 			%>
+
+	 			<div class="media-body">
+	 				<div class="clearfix blogTitle">
 	 				<div class="badge">
 	 				<p class="blogDate">
 	 					<span><time datetime="2013-01-01">$itemCreatedDay</time></span><span class="numb">$itemCreatedMonth</span>
@@ -109,7 +118,7 @@
 				 				if (isShowTitle) {
 				 					%><%
 				 					if (isShowLink) {
-				 						%><h3 class=""><a href="$itemLink" rel="tooltip" data-placement="bottom" title="$itemName">$itemName</a></h3><%
+				 						%><h3 class=""><a href="$itemLink" rel="tooltip" data-placement="bottom" title="$itemName" class="blogTitleLink">$itemName</a></h3><%
 				 					} else {
 				 						%>
 				 						<h3 class="">
@@ -142,15 +151,6 @@
 
 				 		</div>
 				 	</div>
-	 			<div class="media-inner">
-	 			<%
-	 			if (isShowImage) {
-	 				%><div class="blogImage"><a class="image pull-left img-polaroid" title="$itemName"><img alt="$itemName" rel="tooltip" data-placement="bottom" title="$itemName" src="$imgSrc" /></a></div><%
-	 			}
-	 			%>
-	 			
-	 			<div class="media-body">
-
 
 
 	 			<%
@@ -159,7 +159,7 @@
 	 				%><div class="dateAndMail">$itemDateCreated</div><%
 	 			}
 	 			if (isShowSummary) {
-	 				%><div class="summary margBot3">
+	 				%><div class="summary margBot3" id="Blogexcerpt">
 	 				<%
 	 				if (itemSummaryField!=null) {
 	 					print uicomponent.getInlineEditingField(viewNode, itemSummaryField, itemSummary, "TEXTAREA", "Text_"+String.valueOf(i), "CLV1ColumnPresent", true,"fast_publish=" + uicomponent.getFastPublicLink(viewNode));
@@ -174,12 +174,8 @@
 	 				%>
 
 	 				<div class="readLink blog-read-more">
-	 				<a class="blog-button" href="$itemLink" rel="tooltip" data-placement="bottom" title="<%= _ctx.appRes("UICLVPresentation.label.readmore") %>">
+	 				<a class="blog-button" href="$itemLink" data-placement="bottom" title="<%= _ctx.appRes("UICLVPresentation.label.readmore") %>">
 	 				<span><%= _ctx.appRes("UICLVPresentation.label.readmore") %></span>
-	 				<svg width="13px" height="10px" viewBox="0 0 13 10">
-					    <path d="M1,5 L11,5"></path>
-					    <polyline points="8 1 12 5 8 9"></polyline>
-  					</svg>
 	 				</a>
 
 	 				</div><%
@@ -219,3 +215,4 @@
 	 	%>
 	 	</div>
 	 	</div>
+	
