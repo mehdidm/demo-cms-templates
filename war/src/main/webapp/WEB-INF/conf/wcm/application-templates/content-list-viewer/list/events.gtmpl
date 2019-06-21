@@ -180,7 +180,6 @@ div#eventAlAUne {
 }
 
 .voirTousEvents {
-    padding-right: 15px;
     margin-bottom: 0;
 }
 
@@ -314,6 +313,52 @@ div#hpRightContainer {
 .carousel-control:hover, .carousel-control:focus {
     color: #ffcb08;
     opacity: 1;
+}
+
+@media (max-width: 767px) {
+.hpRightContainerTDContainer, .ASContainerTDContainer {
+    display: block;
+    padding: 10px 20px;
+    width: auto;
+    float: none;
+}
+.caption-description p {
+    font-size: 14px;
+}
+
+
+.caption-title {
+    font-size: 16px;
+}
+a.seeAllEvents {
+    padding: 5px 20px;
+}
+
+#eventAlAUne .carousel-caption {
+        top: 15%;
+        width: 75%;
+    }
+
+}
+
+@media (max-width: 520px) {
+.caption-description {
+    display: none;
+}
+#eventAlAUne .carousel-caption {
+    top: 23%;
+}
+.caption-title {
+    color: #ffffff!important;
+    }
+
+    p.caption-title:after {
+      display:none;
+    }
+    .caption-title {
+        font-size: 18px;
+    }
+
 }
 
 </style>
