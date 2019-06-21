@@ -45,3 +45,4 @@ node_modules/
 transaction.log
 rebel.xml
 .factorypath
+/bin/

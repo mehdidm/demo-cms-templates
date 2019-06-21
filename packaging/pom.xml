@@ -17,6 +17,13 @@
       <type>war</type>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>demo-cms-templates-services</artifactId>
+      <version>1.0.x-SNAPSHOT</version>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>demo-cms-templates-packaging</finalName>

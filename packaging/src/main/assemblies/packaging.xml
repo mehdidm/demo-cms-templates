@@ -1,7 +1,7 @@
 <assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
-  <id>@@@artifactId@@@-addon</id>
+  <id>demo-cms-templates-addon</id>
   <formats>
     <format>zip</format>
   </formats>
@@ -10,7 +10,7 @@
     <!-- Extension war -->
     <dependencySet>
       <useProjectArtifact>false</useProjectArtifact>
-      <outputDirectory></outputDirectory>
+      <outputDirectory>webapps</outputDirectory>
       <includes>
         <include>${project.groupId}:demo-cms-templates-war:war</include>
       </includes>
@@ -20,9 +20,9 @@
     <!-- Libraries -->
     <dependencySet>
       <useProjectArtifact>false</useProjectArtifact>
-      <outputDirectory></outputDirectory>
+      <outputDirectory>lib</outputDirectory>
       <includes>
-        <include>${project.groupId}:demo-cms-templates-*:jar</include>
+        <include>${project.groupId}:demo-cms-templates-services:jar</include>
       </includes>
       <scope>provided</scope>
       <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}
