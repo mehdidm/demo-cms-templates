@@ -322,21 +322,6 @@
                            <description></description>
                         </portlet-application>
                      </container>
-                     <container id="1451982946" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
-                        <access-permissions>Everyone</access-permissions>
-                        <gadget-application>
-                           <gadget>
-                              <gadget-ref>Invitations</gadget-ref>
-                           </gadget>
-                           <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
-                           <title>Invitations</title>
-                           <access-permissions>*:/platform/users</access-permissions>
-                           <show-info-bar>false</show-info-bar>
-                           <show-application-state>true</show-application-state>
-                           <show-application-mode>true</show-application-mode>
-                           <description>Invitations</description>
-                        </gadget-application>
-                     </container>
                   </container>
                </container>
             </container>
