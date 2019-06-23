@@ -126,7 +126,7 @@
               <preferences>
                 <preference>
                   <name>folderPath</name>
-                  <value>repository:collaboration:/sites/intranet/categories/intranet</value>
+                  <value>repository:collaboration:/sites/intranet/categories/intranet/categories</value>
                   <read-only>false</read-only>
                 </preference>
                 <preference>
@@ -202,7 +202,7 @@
               <preferences>
                 <preference>
                   <name>folderPath</name>
-                  <value>repository:collaboration:/sites/intranet/categories/intranet</value>
+                  <value>repository:collaboration:/sites/intranet/categories/intranet/archives</value>
                   <read-only>false</read-only>
                 </preference>
                 <preference>

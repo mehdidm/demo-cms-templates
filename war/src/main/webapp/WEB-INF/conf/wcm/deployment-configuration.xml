@@ -20,675 +20,406 @@
 
 -->
 <configuration
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
-        xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
-        
-	  <external-component-plugins>
-        <target-component>org.exoplatform.services.deployment.WCMContentInitializerService</target-component>
-        <component-plugin>
-            <name>Content Initializer Service</name>
-            <set-method>addPlugin</set-method>
-            <type>org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentPlugin</type>
-            <description>XML Deployment Plugin</description>
-            <init-params>
-                <value-param>
-                    <name>override</name>
-                    <description>indicates if this plugin will override data over legacy data, default value:false</description>
-                    <value>true</value>
-                </value-param>
-                <object-param>
-                    <name>Blog Categories</name>
-                    <description>Deployment Descriptor</description>
-                    <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
-                        <field name="target">
-                            <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
-                                <field name="workspace">
-                                    <string>collaboration</string>
-                                </field>
-                                <field name="nodePath">
-                                    <string>/sites/intranet/web contents/site artifacts</string>
-                                </field>
-                            </object>
-                        </field>
-                        <field name="sourcePath">
-                            <string>war:/conf/wcm/artifacts/blogCategories.xml</string>
-                        </field>
-                        <field name="cleanupPublication">
-                            <boolean>true</boolean>
-                        </field>
-                        <field name="cleanupPublicationType">
-                            <string>publish-first-publication</string>
-                        </field>
-                    </object>
-                </object-param>
-                <object-param>
-                    <name>Blog Contents</name>
-                    <description>Deployment Descriptor</description>
-                    <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
-                        <field name="target">
-                            <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
-                                <field name="workspace">
-                                    <string>collaboration</string>
-                                </field>
-                                <field name="nodePath">
-                                    <string>/sites/intranet/web contents/site artifacts</string>
-                                </field>
-                            </object>
-                        </field>
-                        <field name="sourcePath">
-                            <string>war:/conf/wcm/artifacts/blogBlog.xml</string>
-                        </field>
-                        <field name="cleanupPublication">
-                            <boolean>true</boolean>
-                        </field>
-                        <field name="cleanupPublicationType">
-                            <string>publish-first-publication</string>
-                        </field>
-                    </object>
-                </object-param>
-                <object-param>
-                    <name>Blog Styles</name>
-                    <description>Deployment Descriptor</description>
-                    <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
-                        <field name="target">
-                            <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
-                                <field name="workspace">
-                                    <string>collaboration</string>
-                                </field>
-                                <field name="nodePath">
-                                    <string>/sites/intranet/css</string>
-                                </field>
-                            </object>
-                        </field>
-                        <field name="sourcePath">
-                            <string>war:/conf/wcm/artifacts/blogCSS.xml</string>
-                        </field>
-                        <field name="cleanupPublication">
-                            <boolean>true</boolean>
-                        </field>
-                        <field name="cleanupPublicationType">
-                            <string>publish-first-publication</string>
-                        </field>
-                    </object>
-                </object-param>
-              <object-param>
-                    <name>Events</name>
-                    <description>Deployment Descriptor</description>
-                    <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
-                        <field name="target">
-                            <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
-                                <field name="workspace">
-                                    <string>collaboration</string>
-                                </field>
-                                <field name="nodePath">
-                                    <string>/sites/intranet/web contents</string>
-                                </field>
-                            </object>
-                        </field>
-                        <field name="sourcePath">
-                            <string>war:/conf/wcm/artifacts/events.xml</string>
-                        </field>
-                        <field name="cleanupPublication">
-                            <boolean>true</boolean>
-                        </field>
-                        <field name="cleanupPublicationType">
-                            <string>publish-first-publication</string>
-                        </field>
-                    </object>
-                </object-param>
-              <object-param>
-                    <name>Links</name>
-                    <description>Deployment Descriptor</description>
-                    <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
-                        <field name="target">
-                            <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
-                                <field name="workspace">
-                                    <string>collaboration</string>
-                                </field>
-                                <field name="nodePath">
-                                    <string>/sites/intranet</string>
-                                </field>
-                            </object>
-                        </field>
-                        <field name="sourcePath">
-                            <string>war:/conf/wcm/artifacts/links.xml</string>
-                        </field>
-                        <field name="cleanupPublication">
-                            <boolean>true</boolean>
-                        </field>
-                        <field name="cleanupPublicationType">
-                            <string>publish-first-publication</string>
-                        </field>
-                    </object>
-                </object-param>
-            </init-params>
-        </component-plugin>
-         <component-plugin>
-      <name>cms-templates-taxonomy-tree</name>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd http://www.exoplatform.org/xml/ns/kernel_1_2.xsd"
+    xmlns="http://www.exoplatform.org/xml/ns/kernel_1_2.xsd">
+   <external-component-plugins>
+    <target-component>org.exoplatform.services.deployment.WCMContentInitializerService</target-component>
+    <component-plugin>
+      <name>Content Initializer Service</name>
       <set-method>addPlugin</set-method>
-      <type>org.exoplatform.services.wcm.category.CreateTaxonomyPlugin</type>
-      <description>This plugin deploy taxonomy tree to categories folder of site when a site is created</description>
+      <type>org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentPlugin</type>
+      <description>XML Deployment Plugin</description>
       <init-params>
         <value-param>
-          <name>autoCreateWithNewSite</name>
-          <value>true</value>
-        </value-param>
-        <value-param>
-          <name>workspace</name>
-          <value>collaboration</value>
-        </value-param>
-        <value-param>
-          <name>path</name>
-          <value>/sites/intranet/categories</value>
-        </value-param>
-        <value-param>
-          <name>treeName</name>
-          <value>intranet</value>
+          <name>override</name>
+          <description>indicates if this plugin will override data over legacy data, default value:false</description>
+          <value>false</value>
         </value-param>
         <object-param>
-          <name>permission.configuration</name>
-          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig">
-            <field name="taxonomies">
-              <collection type="java.util.ArrayList">
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-              </collection>
+          <name>Archives_Taxonomies</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
+            <field name="target">
+              <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
+                <field name="workspace">
+                  <string>collaboration</string>
+                </field>
+                <field name="nodePath">
+                  <string>/sites/intranet/categories/intranet</string>
+                </field>
+              </object>
+            </field>
+            <field name="sourcePath">
+              <string>war:/conf/wcm/artifacts/Archives_Taxonomy.xml</string>
+            </field>
+            <field name="cleanupPublication">
+              <boolean>false</boolean>
             </field>
           </object>
         </object-param>
         <object-param>
-          <name>predefined.actions</name>
-          <description>description</description>
-          <object type="org.exoplatform.services.cms.actions.impl.ActionConfig">
-            <field name="actions">
-              <collection type="java.util.ArrayList">
-                <value>
-                  <object type="org.exoplatform.services.cms.actions.impl.ActionConfig$TaxonomyAction">
-                    <field name="type">
-                      <string>exo:taxonomyAction</string>
-                    </field>
-                    <field name="name">
-                      <string>taxonomyAction</string>
-                    </field>
-                    <field name="description">
-                      <string/>
-                    </field>
-                    <field name="homePath">
-                      <string>collaboration:/sites/intranet/categories/intranet</string>
-                    </field>
-                    <field name="targetWspace">
-                      <string>collaboration</string>
-                    </field>
-                    <field name="targetPath">
-                      <string>/sites/intranet/web contents</string>
-                    </field>
-                    <field name="lifecyclePhase">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <string>node_added</string>
-                        </value>
-                      </collection>
-                    </field>
-                    <field name="roles">
-                      <string>*:/platform/users</string>
-                    </field>
-                    <field name="mixins">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.actions.impl.ActionConfig$Mixin">
-                            <field name="name">
-                              <string>mix:affectedNodeTypes</string>
-                            </field>
-                            <field name="properties">
-                              <string>exo:affectedNodeTypeNames=nt:file,exo:cssFile,exo:htmlFile,exo:jsFile,exo:webContent,exo:pictureOnHeadWebcontent,wai:siteSearchBox,wai:siteNavigationWebContent,wai:siteBreadcrumb,exo:link</string>
-                            </field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-              </collection>
+          <name>Categories_Taxonomies</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
+            <field name="target">
+              <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
+                <field name="workspace">
+                  <string>collaboration</string>
+                </field>
+                <field name="nodePath">
+                  <string>/sites/intranet/categories/intranet</string>
+                </field>
+              </object>
             </field>
-          </object>
-        </object-param>
-        <object-param>
-          <name>taxonomy.configuration</name>
-          <description>configuration predefined taxonomies to inject in jcr</description>
-          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig">
-            <field name="taxonomies">
-              <collection type="java.util.ArrayList">
-
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Etiam</string></field>
-                    <field name="path"><string>/Etiam</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-                
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Aenean</string></field>
-                    <field name="path"><string>/Aenean</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Vestibulum</string></field>
-                    <field name="path"><string>/Vestibulum</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Ultrices</string></field>
-                    <field name="path"><string>/Ultrices</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Suspendisse</string></field>
-                    <field name="path"><string>/Suspendisse</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Ut</string></field>
-                    <field name="path"><string>/Ut</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Nam</string></field>
-                    <field name="path"><string>/Nam</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Tincidunt</string></field>
-                    <field name="path"><string>/Tincidunt</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-
-                <value>
-                  <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Taxonomy">
-                    <field name="name"><string>Donec</string></field>
-                    <field name="path"><string>/Donec</string></field>
-                    <field name="permissions">
-                      <collection type="java.util.ArrayList">
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>any</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>false</string></field>
-                            <field name="setProperty"><string>false</string></field>
-                            <field name="remove"><string>false</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/administrators</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                        <value>
-                          <object type="org.exoplatform.services.cms.taxonomy.impl.TaxonomyConfig$Permission">
-                            <field name="identity"><string>*:/platform/web-contributors</string></field>
-                            <field name="read"><string>true</string></field>
-                            <field name="addNode"><string>true</string></field>
-                            <field name="setProperty"><string>true</string></field>
-                            <field name="remove"><string>true</string></field>
-                          </object>
-                        </value>
-                      </collection>
-                    </field>
-                  </object>
-                </value>
-
-                
-              </collection>
+            <field name="sourcePath">
+              <string>war:/conf/wcm/artifacts/Categories_Taxonomy.xml</string>
+            </field>
+            <field name="cleanupPublication">
+              <boolean>false</boolean>
             </field>
           </object>
         </object-param>
       </init-params>
     </component-plugin>
-
+  </external-component-plugins>
+  <external-component-plugins>
+    <target-component>org.exoplatform.services.deployment.WCMContentInitializerService</target-component>
+    <component-plugin>
+      <name>Content Initializer Service</name>
+      <set-method>addPlugin</set-method>
+      <type>org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentPlugin</type>
+      <description>XML Deployment Plugin</description>
+      <init-params>
+        <value-param>
+          <name>override</name>
+          <description>indicates if this plugin will override data over legacy data, default value:false</description>
+          <value>false</value>
+        </value-param>
+        <object-param>
+          <name>Blog Categories</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
+            <field name="target">
+              <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
+                <field name="workspace">
+                  <string>collaboration</string>
+                </field>
+                <field name="nodePath">
+                  <string>/sites/intranet/web contents/site artifacts</string>
+                </field>
+              </object>
+            </field>
+            <field name="sourcePath">
+              <string>war:/conf/wcm/artifacts/blogCategories.xml</string>
+            </field>
+            <field name="cleanupPublication">
+              <boolean>true</boolean>
+            </field>
+            <field name="cleanupPublicationType">
+              <string>publish-first-publication</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>Blog Contents</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
+            <field name="target">
+              <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
+                <field name="workspace">
+                  <string>collaboration</string>
+                </field>
+                <field name="nodePath">
+                  <string>/sites/intranet/web contents/site artifacts</string>
+                </field>
+              </object>
+            </field>
+            <field name="sourcePath">
+              <string>war:/conf/wcm/artifacts/blogBlog.xml</string>
+            </field>
+            <field name="cleanupPublication">
+              <boolean>true</boolean>
+            </field>
+            <field name="cleanupPublicationType">
+              <string>publish-first-publication</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>Blog Styles</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
+            <field name="target">
+              <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
+                <field name="workspace">
+                  <string>collaboration</string>
+                </field>
+                <field name="nodePath">
+                  <string>/sites/intranet/css</string>
+                </field>
+              </object>
+            </field>
+            <field name="sourcePath">
+              <string>war:/conf/wcm/artifacts/blogCSS.xml</string>
+            </field>
+            <field name="cleanupPublication">
+              <boolean>true</boolean>
+            </field>
+            <field name="cleanupPublicationType">
+              <string>publish-first-publication</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>Events</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
+            <field name="target">
+              <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
+                <field name="workspace">
+                  <string>collaboration</string>
+                </field>
+                <field name="nodePath">
+                  <string>/sites/intranet/web contents</string>
+                </field>
+              </object>
+            </field>
+            <field name="sourcePath">
+              <string>war:/conf/wcm/artifacts/events.xml</string>
+            </field>
+            <field name="cleanupPublication">
+              <boolean>true</boolean>
+            </field>
+            <field name="cleanupPublicationType">
+              <string>publish-first-publication</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>Links</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
+            <field name="target">
+              <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
+                <field name="workspace">
+                  <string>collaboration</string>
+                </field>
+                <field name="nodePath">
+                  <string>/sites/intranet</string>
+                </field>
+              </object>
+            </field>
+            <field name="sourcePath">
+              <string>war:/conf/wcm/artifacts/links.xml</string>
+            </field>
+            <field name="cleanupPublication">
+              <boolean>true</boolean>
+            </field>
+            <field name="cleanupPublicationType">
+              <string>publish-first-publication</string>
+            </field>
+          </object>
+        </object-param>
+      </init-params>
+    </component-plugin>
     <component-plugin>
       <name>cms-template-link</name>
       <set-method>addPlugin</set-method>
       <type>org.exoplatform.services.deployment.plugins.LinkDeploymentPlugin</type>
       <description>This plugin deploy some initial webcontent as site artifact to site artifact folder of portal when a portal is created</description>
       <init-params>
-        <object-param>
-          <name>link01</name>
+  
+          <object-param>
+          <name>linkAR3</name>
           <description>Deployment Descriptor</description>
           <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
             <field name="sourcePath">
-              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/adipisicing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore</string>
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 7</string>
             </field>
             <field name="targetPath">
-              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/Nam</string>
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/january-2019</string>
             </field>
           </object>
         </object-param>
         <object-param>
-          <name>link02</name>
+          <name>linkAR2</name>
           <description>Deployment Descriptor</description>
           <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
             <field name="sourcePath">
-              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/consectetur-adipisicing-elit-sed-do-eiusmod-tempor</string>
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 8</string>
             </field>
             <field name="targetPath">
-              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/Tincidunt</string>
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/january-2019</string>
             </field>
           </object>
         </object-param>
         <object-param>
-          <name>link03</name>
+          <name>linkAR1</name>
           <description>Deployment Descriptor</description>
           <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
             <field name="sourcePath">
-              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/fusce-euismod-consequat-ante-orem-ipsum-dolor-sit-am</string>
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 9</string>
             </field>
             <field name="targetPath">
-              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/Donec</string>
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/february-2019</string>
+            </field>
+          </object>
+        </object-param>
+
+
+        <object-param>
+          <name>linkAR4</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 1</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/january-2019</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>linkAR5</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 2</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/march-2019</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>linkAR6</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 4</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/march-2019</string>
+            </field>
+          </object>
+        </object-param>  
+  
+        <object-param>
+          <name>linkHR3</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 7</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/human-resources</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>linkHR2</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 8</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/human-resources</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>linkHR1</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 9</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/human-resources</string>
+            </field>
+          </object>
+        </object-param>
+       
+        <object-param>
+          <name>linkMarSales3</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 4</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/sales</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>linkMarSales2</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 5</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/sales</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>linkMarSales1</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 6</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/sales</string>
+            </field>
+          </object>
+        </object-param>
+       
+       
+        <object-param>
+          <name>linkMarketing3</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 3</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/marketing</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>linkMarketing2</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 2</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/marketing</string>
+            </field>
+          </object>
+        </object-param>
+        <object-param>
+          <name>linkMarketing1</name>
+          <description>Deployment Descriptor</description>
+          <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
+            <field name="sourcePath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 1</string>
+            </field>
+            <field name="targetPath">
+              <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/marketing</string>
             </field>
           </object>
         </object-param>
       </init-params>
     </component-plugin>
     <component-plugin>
-      <name>template-cms-publication</name>
+      <name>cms-templates-publication</name>
       <set-method>addPlugin</set-method>
       <type>org.exoplatform.services.wcm.extensions.deployment.PublicationDeploymentPlugin</type>
       <description>Publication Deployment Plugin</description>
@@ -699,16 +430,26 @@
           <object type="org.exoplatform.services.wcm.extensions.deployment.PublicationDeploymentDescriptor">
             <field name="contents">
               <collection type="java.util.ArrayList">
-                <value><string>collaboration:/sites/intranet/web contents/site artifacts/blogBlog</string></value>
-                <value><string>collaboration:/sites/intranet/web contents/site artifacts/blogBlog/fusce-euismod-consequat-ante-orem-ipsum-dolor-sit-am</string></value>
-                <value><string>collaboration:/sites/intranet/web contents/site artifacts/blogBlog/adipisicing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore</string></value>
-                <value><string>collaboration:/sites/intranet/web contents/site artifacts/blogBlog/consectetur-adipisicing-elit-sed-do-eiusmod-tempor</string></value>
-                <value><string>collaboration:/sites/intranet/web contents/site artifacts/blogCategories</string></value>
+                <value>
+                  <string>collaboration:/sites/intranet/web contents/site artifacts/blogBlog</string>
+                </value>
+                <value>
+                  <string>collaboration:/sites/intranet/web contents/site artifacts/blogBlog/fusce-euismod-consequat-ante-orem-ipsum-dolor-sit-am</string>
+                </value>
+                <value>
+                  <string>collaboration:/sites/intranet/web contents/site artifacts/blogBlog/adipisicing-elit-sed-do-eiusmod-tempor-incididunt-ut-labore</string>
+                </value>
+                <value>
+                  <string>collaboration:/sites/intranet/web contents/site artifacts/blogBlog/consectetur-adipisicing-elit-sed-do-eiusmod-tempor</string>
+                </value>
+                <value>
+                  <string>collaboration:/sites/intranet/web contents/site artifacts/blogCategories</string>
+                </value>
               </collection>
             </field>
           </object>
         </object-param>
       </init-params>
     </component-plugin>
-</external-component-plugins>
+  </external-component-plugins>
 </configuration>
