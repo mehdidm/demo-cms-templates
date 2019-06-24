@@ -308,19 +308,6 @@
                      <access-permissions>Everyone</access-permissions>
                      <container id="twoPortletContainer" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
                         <access-permissions>Everyone</access-permissions>
-                        <gadget-application>
-                           <gadget>
-                              <gadget-ref>Invitations</gadget-ref>
-                           </gadget>
-                           <theme>Vista:VistaTheme::Enterprise:DefaultTheme::Default:DefaultTheme::Mac:MacTheme</theme>
-                           <title>Invitations</title>
-                           <access-permissions>*:/platform/users</access-permissions>
-                           <show-info-bar>false</show-info-bar>
-                           <show-application-state>true</show-application-state>
-                           <show-application-mode>true</show-application-mode>
-                           <description>Invitations</description>
-                           <icon>PortletIcon</icon>
-                        </gadget-application>
                         <portlet-application>
                            <portlet>
                               <application-ref>demo-cms-templates</application-ref>
@@ -383,7 +370,7 @@
                                  </preference>
                                  <preference>
                                     <name>folderPath</name>
-                                    <value>repository:collaboration:/sites/intranet/links</value>
+                                    <value>repository:collaboration:/sites/intranet/web contents/links</value>
                                     <read-only>false</read-only>
                                  </preference>
                                  <preference>
@@ -450,6 +437,143 @@
                            </portlet>
                            <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
                            <access-permissions>*:/platform/administrators</access-permissions>
+                           <show-info-bar>false</show-info-bar>
+                           <show-application-state>true</show-application-state>
+                           <show-application-mode>true</show-application-mode>
+                           <description></description>
+                        </portlet-application>
+                     </container>
+                     <container id="upcomingEventsContainer" template="system:/groovy/portal/webui/container/UIContainer.gtmpl">
+                        <access-permissions>Everyone</access-permissions>
+                        <portlet-application>
+                           <portlet>
+                              <application-ref>demo-cms-templates</application-ref>
+                              <portlet-ref>UpcomingEventsPortlet</portlet-ref>
+                              <preferences>
+                                 <preference>
+                                    <name>showSummary</name>
+                                    <value>false</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>orderType</name>
+                                    <value>DESC</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>formViewTemplatePath</name>
+                                    <value>/exo:ecm/views/templates/content-list-viewer/list/Upcoming_Events.gtmpl</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>sharedCache</name>
+                                    <value>true</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showReadmore</name>
+                                    <value>false</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showHeader</name>
+                                    <value>true</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showScvWith</name>
+                                    <value>content-id</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>orderBy</name>
+                                    <value>publication:liveDate</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showThumbnailsView</name>
+                                    <value>true</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>nodeDrive</name>
+                                    <value>Managed Sites</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>mode</name>
+                                    <value>AutoViewerMode</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>folderPath</name>
+                                    <value>repository:collaboration:/sites/intranet/web contents/site artifacts/events</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showRssLink</name>
+                                    <value>false</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showRefreshButton</name>
+                                    <value>false</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>basePath</name>
+                                    <value>detail</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>itemsPerPage</name>
+                                    <value>10</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showTitle</name>
+                                    <value>true</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showClvBy</name>
+                                    <value>folder-id</value>
+                                    <read-only>false</read-only>
+                                 </preference> 
+                                 <preference>
+                                    <name>header</name>
+                                    <value>Upcoming Events</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>contextualFolder</name>
+                                    <value>contextualDisable</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showDateCreated</name>
+                                    <value>false</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>showLink</name>
+                                    <value>true</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>automaticDetection</name>
+                                    <value>true</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                                 <preference>
+                                    <name>paginatorTemplatePath</name>
+                                    <value>/exo:ecm/views/templates/content-list-viewer/paginators/DefaultPaginator.gtmpl</value>
+                                    <read-only>false</read-only>
+                                 </preference>
+                              </preferences>
+                           </portlet>
+                           <theme>Default:DefaultTheme::Vista:VistaTheme::Mac:MacTheme</theme>
+                           <access-permissions>*:/platform/users</access-permissions>
                            <show-info-bar>false</show-info-bar>
                            <show-application-state>true</show-application-state>
                            <show-application-mode>true</show-application-mode>

@@ -86,6 +86,49 @@
                     </field>
                   </object>
                 </value>
+                
+                <!-- event -->
+                <value>
+                  <object type="org.exoplatform.services.cms.templates.impl.TemplateConfig$NodeType">
+                    <field name="nodetypeName">
+                      <string>exo:eventContent</string>
+                    </field>
+                    <field name="documentTemplate">
+                      <boolean>true</boolean>
+                    </field>
+                    <field name="label">
+                      <string>Event</string>
+                    </field>
+                    <field name="referencedView">
+                      <collection type="java.util.ArrayList">
+                        <value>
+                          <object type="org.exoplatform.services.cms.templates.impl.TemplateConfig$Template">
+                            <field name="templateFile">
+                              <string>/eventContent/view1.gtmpl</string>
+                            </field>
+                            <field name="roles">
+                              <string>*</string>
+                            </field>
+                          </object>
+                        </value>
+                      </collection>
+                    </field>
+                    <field name="referencedDialog">
+                      <collection type="java.util.ArrayList">
+                        <value>
+                          <object type="org.exoplatform.services.cms.templates.impl.TemplateConfig$Template">
+                            <field name="templateFile">
+                              <string>/eventContent/dialog1.gtmpl</string>
+                            </field>
+                            <field name="roles">
+                              <string>*:/platform/web-contributors</string>
+                            </field>
+                          </object>
+                        </value>
+                      </collection>
+                    </field>
+                  </object>
+                </value>
               </collection>
             </field>
           </object>
@@ -93,11 +136,27 @@
       </init-params>
     </component-plugin>
     <component-plugin>
-      <name>FilterContentTypeForAgital</name>
+      <name>FilterContentTypeFor</name>
       <set-method>addContentTypeFilterPlugin</set-method>
       <type>org.exoplatform.services.cms.templates.ContentTypeFilterPlugin</type>
       <description>this plugin is used to filter wcm nodetype</description>
       <init-params>
+        <object-param>
+          <name>eventContentFolderFilter</name>
+          <description>only exo:dnblog can be created in exo:dnblogFolder</description>
+          <object type="org.exoplatform.services.cms.templates.ContentTypeFilterPlugin$FolderFilterConfig">
+            <field name="folderType">
+              <string>exo:eventsFolder</string>
+            </field>
+            <field name="contentTypes">
+              <collection type="java.util.ArrayList">
+                <value>
+                  <string>exo:eventContent</string>
+                </value>
+              </collection>
+            </field>
+          </object>
+        </object-param>
         <object-param>
           <name>dnblogFolderFilter</name>
           <description>only exo:dnblog can be created in exo:dnblogFolder</description>

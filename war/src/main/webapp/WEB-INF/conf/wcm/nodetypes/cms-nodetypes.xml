@@ -11,4 +11,21 @@
       <supertype>nt:unstructured</supertype>
     </supertypes>
   </nodeType>
+	
+  <nodeType name="exo:eventContent" isMixin="false" hasOrderableChildNodes="false" primaryItemName="" >
+    <supertypes>
+      <supertype>exo:webContent</supertype>
+    </supertypes>
+    <propertyDefinitions>
+      <propertyDefinition name="exo:eventDate" requiredType="Date" autoCreated="false" mandatory="true" onParentVersion="COPY" protected="false" multiple="false">
+	    <valueConstraints/>
+	  </propertyDefinition>
+    </propertyDefinitions>
+  </nodeType> 
+
+  <nodeType name="exo:eventsFolder" isMixin="false" hasOrderableChildNodes="false" primaryItemName="">
+    <supertypes>
+      <supertype>nt:unstructured</supertype>
+    </supertypes>
+  </nodeType>
 </nodeTypes>

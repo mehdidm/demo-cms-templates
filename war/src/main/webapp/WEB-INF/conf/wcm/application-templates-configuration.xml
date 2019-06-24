@@ -34,6 +34,22 @@
 				</value-param>
 
 				<object-param>
+					<name>upcoming_events</name>
+					<object
+						type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
+						<field name="title">
+							<string>events</string>
+						</field>
+						<field name="templateName">
+							<string>Upcoming_Events.gtmpl</string>
+						</field>
+						<field name="category">
+							<string>list</string>
+						</field>
+					</object>
+				</object-param>
+
+				<object-param>
 					<name>events</name>
 					<object
 						type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
