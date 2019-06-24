@@ -29,7 +29,7 @@ import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.notification.LinkProviderUtils;
 import org.gatein.common.text.EntityEncoder;
 import org.services.notification.cms.templates.plugin.PostUpdateStatePlugin;
-import org.services.notification.cms.templates.utils.NotificationUtils;
+import org.services.notification.cms.templates.utils.NotificationConstants;
 
 
 @TemplateConfigs(templates = {
@@ -54,10 +54,10 @@ import org.services.notification.cms.templates.utils.NotificationUtils;
 	      NotificationInfo notification = ctx.getNotificationInfo();
 	      String language = getLanguage(notification);
 	      log.info("Prepare Mail notif for "+ notification.getKey().getId());
-	      String contentUpdater = notification.getValueOwnerParameter(NotificationUtils.CONTENT_UPDATER);
-	      String contentTitle = notification.getValueOwnerParameter(NotificationUtils.CONTENT_TITLE);
-	      String contentStatus = notification.getValueOwnerParameter(NotificationUtils.CONTENT_STATUS);
-
+	      String contentUpdater = notification.getValueOwnerParameter(NotificationConstants.CONTENT_UPDATER);
+	      String contentTitle = notification.getValueOwnerParameter(NotificationConstants.CONTENT_TITLE);
+	      String contentStatus = notification.getValueOwnerParameter(NotificationConstants.CONTENT_STATUS);
+	      String contentUrl= notification.getValueOwnerParameter(NotificationConstants.CONTENT_URL);
 	      TemplateContext templateContext = new TemplateContext(notification.getKey().getId(), language);
 	      IdentityManager identityManager = CommonsUtils.getService(IdentityManager.class);
 
@@ -82,6 +82,7 @@ import org.services.notification.cms.templates.utils.NotificationUtils;
 	      templateContext.put("CONTENT_TITLE", encoder.encode(contentTitle));
 	      templateContext.put("CONTENT_STATUS", encoder.encode(contentStatus));
 	      templateContext.put("CONTENT_UPDATER", encoder.encode(contentUpdater));
+	      templateContext.put("CONTENT_URL", encoder.encode(contentUrl));
 
 
 	      templateContext.put("FOOTER_LINK", LinkProviderUtils.getRedirectUrl("notification_settings", receiver.getRemoteId()));

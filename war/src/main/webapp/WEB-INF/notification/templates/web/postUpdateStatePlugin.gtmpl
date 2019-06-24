@@ -6,9 +6,26 @@
     <div class="media-body">
       <%
        String profileUrl = "<a class=\"user-name text-bold\" href=\"javascript:void(0)\">" + USER + "</a>";
+       String creator = "<span style=\"text-decoration: none; color: #2f5e92; font-family: 'HelveticaNeue Bold', Helvetica, Arial, sans-serif\"><strong>" + CONTENT_UPDATER + "</strong></span>";
+       def description = "";
+
+
+
+
+       if(CONTENT_STATUS.equals("published")) {
+       description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.published",CONTENT_TITLE,creator);
+} else if (CONTENT_STATUS.equals("pending")) {
+   description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.request.approval.mail",creator, CONTENT_TITLE);
+} else if (CONTENT_STATUS.equals("approved")) {
+   description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.approved.mail",creator, CONTENT_TITLE);
+} else if (CONTENT_STATUS.equals("staged")) {
+   description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.staged",CONTENT_TITLE);
+} else {
+   description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.created",creator, CONTENT_TITLE);
+}
       %>
       <div class="contentSmall" data-link="$URL">
-        <div class="status"><%=_ctx.appRes("Notification.description.email.PostUpdateStatePlugin",profileUrl, CONTENT_TITLE, CONTENT_STATUS)%></div>
+        <div class="status">$description</div>
         <div class="content">$CONTENT_TITLE</div>
         <div class="lastUpdatedTime">$LAST_UPDATED_TIME</div>
       </div>

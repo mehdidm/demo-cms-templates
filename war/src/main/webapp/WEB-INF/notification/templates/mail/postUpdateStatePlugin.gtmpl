@@ -37,10 +37,26 @@
 <%
 String profileUrl = "<a style=\"text-decoration: none; color: #2f5e92; font-family: 'HelveticaNeue Bold', Helvetica, Arial, sans-serif\" href=\""+ PROFILE_URL + "\"><strong>" + USER + "</strong></a>";
 String creator = "<span style=\"text-decoration: none; color: #2f5e92; font-family: 'HelveticaNeue Bold', Helvetica, Arial, sans-serif\"><strong>" + CONTENT_UPDATER + "</strong></span>";
+def description = "";
+
+
+
+
+       if(CONTENT_STATUS.equals("published")) {
+       description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.published",CONTENT_TITLE,creator);
+} else if (CONTENT_STATUS.equals("pending")) {
+   description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.request.approval.mail",creator, CONTENT_TITLE);
+} else if (CONTENT_STATUS.equals("approved")) {
+   description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.approved.mail",creator, CONTENT_TITLE);
+} else if (CONTENT_STATUS.equals("staged")) {
+   description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.staged",CONTENT_TITLE);
+} else {
+   description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.created",creator, CONTENT_TITLE);
+}
 def msg = _ctx.appRes("Notification.message.PostUpdateStatePlugin",CONTENT_TITLE);
-def description = _ctx.appRes("Notification.description.email.PostUpdateStatePlugin",profileUrl, CONTENT_TITLE, CONTENT_STATUS);
+
 %>
-<%=msg%>:
+
 </p>
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f9f9f9" align="center" style="margin:0 0 10px; width: 100%; background-color: #f9f9f9; font-size: 13px; color:#333333;line-height: 18px;">
 	<tr>
@@ -84,6 +100,15 @@ font-weight: bold;
 box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
 vertical-align: middle;
 " href="http://www.exoplatform.com/company/en/home" title="Reply">Reply</a> -->
+<%
+def buttonLabel=_ctx.appRes("Notification.button.goToContent.label");
+def url = CONTENT_URL;
+if (CONTENT_STATUS.equals("pending")) {
+
+buttonLabel = _ctx.appRes("Notification.button.reviewContent.label");
+}
+
+%>
 
 <a target="_blank" style="
 display: inline-block;
@@ -109,7 +134,7 @@ border: 1px solid #c7c7c7;
 box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
 vertical-align: middle;
 margin-left: 3px;
-" href="#" target="_blank"><%=_ctx.appRes("Notification.label.openContent")%></a>
+" href="$url" target="_blank">$buttonLabel</a>
 </p>
 																			</td>
 </tr>

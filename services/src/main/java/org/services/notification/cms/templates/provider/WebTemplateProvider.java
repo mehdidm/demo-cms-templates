@@ -28,74 +28,77 @@ import org.exoplatform.social.notification.LinkProviderUtils;
 import org.exoplatform.webui.utils.TimeConvertUtils;
 import org.gatein.common.text.EntityEncoder;
 import org.services.notification.cms.templates.plugin.PostUpdateStatePlugin;
-import org.services.notification.cms.templates.utils.NotificationUtils;
+import org.services.notification.cms.templates.utils.NotificationConstants;
 
 import com.ibm.icu.util.Calendar;
-@TemplateConfigs(
-	templates = {
-		@TemplateConfig( pluginId = PostUpdateStatePlugin.ID, template="war:/notification/templates/web/postUpdateStatePlugin.gtmpl")
-		   }
-		)
-public class WebTemplateProvider extends TemplateProvider  {
-	  protected static Log log = ExoLogger.getLogger(WebTemplateProvider.class);
 
-	  public WebTemplateProvider(InitParams initParams) {
-	    super(initParams);
-	    this.templateBuilders.put(PluginKey.key(PostUpdateStatePlugin.ID), new TemplateBuilder());
-	  }
+@TemplateConfigs(templates = {
+    @TemplateConfig(pluginId = PostUpdateStatePlugin.ID, template = "war:/notification/templates/web/postUpdateStatePlugin.gtmpl") })
+public class WebTemplateProvider extends TemplateProvider {
+  protected static Log log = ExoLogger.getLogger(WebTemplateProvider.class);
 
-	  private class TemplateBuilder extends AbstractTemplateBuilder {
-	    @Override
-	    protected MessageInfo makeMessage(NotificationContext ctx) {
-	      NotificationInfo notification = ctx.getNotificationInfo();
-	      String pluginId = notification.getKey().getId();      
+  public WebTemplateProvider(InitParams initParams) {
+    super(initParams);
+    this.templateBuilders.put(PluginKey.key(PostUpdateStatePlugin.ID), new TemplateBuilder());
+  }
 
-	      String language = getLanguage(notification);
-	      TemplateContext templateContext = TemplateContext.newChannelInstance(getChannelKey(), pluginId, language);
+  private class TemplateBuilder extends AbstractTemplateBuilder {
+    @Override
+    protected MessageInfo makeMessage(NotificationContext ctx) {
+      NotificationInfo notification = ctx.getNotificationInfo();
+      String pluginId = notification.getKey().getId();
 
-	      String contentUpdater = notification.getValueOwnerParameter(NotificationUtils.CONTENT_UPDATER);
-	      String contentTitle = notification.getValueOwnerParameter(NotificationUtils.CONTENT_TITLE);
-	      String contentStatus = notification.getValueOwnerParameter(NotificationUtils.CONTENT_STATUS);
+      String language = getLanguage(notification);
+      TemplateContext templateContext = TemplateContext.newChannelInstance(getChannelKey(), pluginId, language);
 
-	      EntityEncoder encoder = HTMLEntityEncoder.getInstance();
-	      IdentityManager identityManager = CommonsUtils.getService(IdentityManager.class);
-	      if( contentUpdater == null || IdentityConstants.SYSTEM.equals(contentUpdater)) {
-		      // System
-		      templateContext.put("USER", "SYSTEM");
-		      templateContext.put("AVATAR", "/eXoSkin/skin/images/system/UserAvtDefault.png");
-		      templateContext.put("PROFILE_URL", "#");
-	      } else {
-		      Identity author = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME, contentUpdater, true);
-		      Profile profile = author.getProfile();
-		      //creator
-		      templateContext.put("USER", encoder.encode(profile.getFullName()));
-		      templateContext.put("AVATAR", LinkProviderUtils.getUserAvatarUrl(profile));
-		      templateContext.put("PROFILE_URL", LinkProviderUtils.getRedirectUrl("user", author.getRemoteId()));
-	      }
-	      templateContext.put("CONTENT_TITLE", encoder.encode(contentTitle));
-	      templateContext.put("CONTENT_STATUS", encoder.encode(contentStatus));
-	      templateContext.put("CONTENT_UPDATER", encoder.encode(contentUpdater));
+      String contentUpdater = notification.getValueOwnerParameter(NotificationConstants.CONTENT_UPDATER);
+      String contentTitle = notification.getValueOwnerParameter(NotificationConstants.CONTENT_TITLE);
+      String contentStatus = notification.getValueOwnerParameter(NotificationConstants.CONTENT_STATUS);
 
+      EntityEncoder encoder = HTMLEntityEncoder.getInstance();
+      IdentityManager identityManager = CommonsUtils.getService(IdentityManager.class);
+      if (contentUpdater == null || IdentityConstants.SYSTEM.equals(contentUpdater)) {
+        // System
+        templateContext.put("USER", "SYSTEM");
+        templateContext.put("AVATAR", "/eXoSkin/skin/images/system/UserAvtDefault.png");
+        templateContext.put("PROFILE_URL", "#");
+      } else {
+        Identity author = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME, contentUpdater, true);
+        Profile profile = author.getProfile();
+        // creator
+        templateContext.put("USER", encoder.encode(profile.getFullName()));
+        templateContext.put("AVATAR", LinkProviderUtils.getUserAvatarUrl(profile));
+        templateContext.put("PROFILE_URL", LinkProviderUtils.getRedirectUrl("user", author.getRemoteId()));
+      }
+      templateContext.put("CONTENT_TITLE", encoder.encode(contentTitle));
+      templateContext.put("CONTENT_STATUS", encoder.encode(contentStatus));
+      templateContext.put("CONTENT_UPDATER", encoder.encode(contentUpdater));
 
-	      templateContext.put("READ", Boolean.valueOf(notification.getValueOwnerParameter(NotificationMessageUtils.READ_PORPERTY.getKey())) ? "read" : "unread");
-	      templateContext.put("NOTIFICATION_ID", notification.getId());
-	      Calendar lastModified = Calendar.getInstance();
-	      lastModified.setTimeInMillis(notification.getLastModifiedDate());
-	      templateContext.put("LAST_UPDATED_TIME", TimeConvertUtils.convertXTimeAgoByTimeServer(lastModified.getTime(),"EE, dd yyyy", new Locale(language), TimeConvertUtils.YEAR));
+      templateContext.put("READ",
+                          Boolean.valueOf(notification.getValueOwnerParameter(NotificationMessageUtils.READ_PORPERTY.getKey())) ? "read"
+                                                                                                                                : "unread");
+      templateContext.put("NOTIFICATION_ID", notification.getId());
+      Calendar lastModified = Calendar.getInstance();
+      lastModified.setTimeInMillis(notification.getLastModifiedDate());
+      templateContext.put("LAST_UPDATED_TIME",
+                          TimeConvertUtils.convertXTimeAgoByTimeServer(lastModified.getTime(),
+                                                                       "EE, dd yyyy",
+                                                                       new Locale(language),
+                                                                       TimeConvertUtils.YEAR));
 
-	      //
-	      String body = TemplateUtils.processGroovy(templateContext);
-	      //binding the exception throws by processing template
-	      ctx.setException(templateContext.getException());
-	      MessageInfo messageInfo = new MessageInfo();
-	      return messageInfo.body(body).end();
-	    }
+      //
+      String body = TemplateUtils.processGroovy(templateContext);
+      // binding the exception throws by processing template
+      ctx.setException(templateContext.getException());
+      MessageInfo messageInfo = new MessageInfo();
+      return messageInfo.body(body).end();
+    }
 
-	    @Override
-	    protected boolean makeDigest(NotificationContext ctx, Writer writer) {
-	      return false;
-	    }
+    @Override
+    protected boolean makeDigest(NotificationContext ctx, Writer writer) {
+      return false;
+    }
 
-	  };
+  };
 
 }

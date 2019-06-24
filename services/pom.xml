@@ -10,7 +10,7 @@
 		<version>1.0.x-SNAPSHOT</version>
 	</parent>
 	<artifactId>demo-cms-templates-services</artifactId>
-    <name>eXo Add-on:: Demo CMS Templates - Services</name>
+	<name>eXo Add-on:: Demo CMS Templates - Services</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,7 +35,7 @@
 			<groupId>org.exoplatform.commons</groupId>
 			<artifactId>commons-api</artifactId>
 			<scope>provided</scope>
-			</dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.exoplatform.kernel</groupId>
 			<artifactId>exo.kernel.container</artifactId>
@@ -43,28 +43,28 @@
 		</dependency>
 		<dependency>
 			<groupId>org.exoplatform.social</groupId>
-            <artifactId>social-component-core</artifactId>
- 			<scope>provided</scope>
+			<artifactId>social-component-core</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-            <groupId>org.exoplatform.commons</groupId>
-            <artifactId>commons-webui-ext</artifactId>
-            <scope>provided</scope>
-        </dependency>
-         <dependency>
-            <groupId>org.exoplatform.social</groupId>
-            <artifactId>social-component-notification</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.exoplatform.ecms</groupId>
-            <artifactId>ecms-core-services</artifactId>
-            <scope>provided</scope>
-        </dependency>  
-        <dependency>
-            <groupId>org.exoplatform.ecms</groupId>
-            <artifactId>ecms-ext-authoring-services</artifactId>
-            <scope>provided</scope>
-        </dependency> 
+			<groupId>org.exoplatform.commons</groupId>
+			<artifactId>commons-webui-ext</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.exoplatform.social</groupId>
+			<artifactId>social-component-notification</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.exoplatform.ecms</groupId>
+			<artifactId>ecms-core-services</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.exoplatform.ecms</groupId>
+			<artifactId>ecms-ext-authoring-services</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>
