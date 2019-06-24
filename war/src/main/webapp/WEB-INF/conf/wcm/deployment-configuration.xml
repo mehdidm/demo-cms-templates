@@ -391,7 +391,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 7</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 7</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/january-2019</string>
@@ -403,7 +403,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 8</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 8</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/january-2019</string>
@@ -415,7 +415,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 9</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 9</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/february-2019</string>
@@ -429,7 +429,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 1</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 1</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/january-2019</string>
@@ -441,7 +441,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 2</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 2</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/march-2019</string>
@@ -453,7 +453,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 4</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 4</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/archives/march-2019</string>
@@ -466,7 +466,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 7</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 7</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/human-resources</string>
@@ -478,7 +478,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 8</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 8</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/human-resources</string>
@@ -490,7 +490,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 9</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 9</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/human-resources</string>
@@ -503,7 +503,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 4</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 4</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/sales</string>
@@ -515,7 +515,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 5</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 5</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/sales</string>
@@ -527,7 +527,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 6</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 6</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/sales</string>
@@ -541,7 +541,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 3</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 3</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/marketing</string>
@@ -553,7 +553,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 2</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 2</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/marketing</string>
@@ -565,7 +565,7 @@
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.deployment.plugins.LinkDeploymentDescriptor">
                         <field name="sourcePath">
-                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog num?ro 1</string>
+                            <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/web contents/site artifacts/blogBlog/Titre blog numéro 1</string>
                         </field>
                         <field name="targetPath">
                             <string>${gatein.jcr.repository.default:repository}:collaboration:/sites/intranet/categories/intranet/categories/marketing</string>
