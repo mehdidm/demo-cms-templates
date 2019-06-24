@@ -90,7 +90,7 @@
                      </preference>
                      <preference>
                         <name>showRssLink</name>
-                        <value>true</value>
+                        <value>false</value>
                         <read-only>false</read-only>
                      </preference>
                      <preference>
@@ -120,7 +120,7 @@
                      </preference>
                      <preference>
                         <name>header</name>
-                        <value>actualités</value>
+                        <value>Actualités</value>
                         <read-only>false</read-only>
                      </preference>
                      <preference>
@@ -198,7 +198,7 @@
                            </preference>
                            <preference>
                               <name>showHeader</name>
-                              <value>false</value>
+                              <value>true</value>
                               <read-only>false</read-only>
                            </preference>
                            <preference>
@@ -233,7 +233,7 @@
                            </preference>
                            <preference>
                               <name>showRssLink</name>
-                              <value>true</value>
+                              <value>false</value>
                               <read-only>false</read-only>
                            </preference>
                            <preference>
@@ -263,7 +263,7 @@
                            </preference>
                            <preference>
                               <name>header</name>
-                              <value></value>
+                              <value>News</value>
                               <read-only>false</read-only>
                            </preference>
                            <preference>

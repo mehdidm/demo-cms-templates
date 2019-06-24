@@ -22,7 +22,7 @@
     def publishedMsg = _ctx.appRes("PublicationStates.published");
 %>
 
-<div id="$uicomponent.id" class="oneColumnCLVTemplate">
+<div id="$uicomponent.id" class="oneColumnCLVTemplate  importantLinksItem">
 	<div class="clv uiBox">
 		<%
 			def header = uicomponent.getHeader();
@@ -30,7 +30,7 @@
 			def isShowRssLink = uicomponent.isShowRssLink();
 			def isShowHeader = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_HEADER) && header != null && header.trim().length() != 0;
 			%>
-			
+
 				<%
 				if (isShowHeader || isShowRssLink) {
 					%>
@@ -38,11 +38,11 @@
                   <%if (isShowRssLink) {
                     %><a class="rssIcon pull-right" onclick="javascript:window.open('$rssLink');" style="cursor:pointer" rel="tooltip" data-placement="bottom" title="<%= _ctx.appRes("UICLVPresentation.label.rssFeed") %>"><i class="uiIconRss uiIconLightGray"></i></a><%
                   }
-                  if(isShowHeader) {%> <span>$header</span> <%}%>					 
+                  if(isShowHeader) {%> <span>$header</span> <%}%>
 				</h5>
 					<% }
 					%>
-					
+
 				<%
 			if (uicomponent.getUIPageIterator().getAvailable() == 0) {
 				%>
@@ -63,11 +63,11 @@
 								def isShowDate = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_DATE_CREATED);
 								def isShowLink = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_LINK);
 								def isShowReadmore = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_READMORE);
-								
+
 								def itemLink = viewNode.getProperty("exo:linkURL").getValue().getString();
 								def itemDateCreated = uicomponent.getCreatedDate(viewNode);
-								def itemOwner = uicomponent.getAuthor(viewNode);			
-								
+								def itemOwner = uicomponent.getAuthor(viewNode);
+
 								def imgSrc = uicomponent.getIllustrativeImage(viewNode);
 								def isShowImage = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_ILLUSTRATION) && imgSrc != null;
 
@@ -79,16 +79,16 @@
 								def itemSummary = uicomponent.getSummary(viewNode);
 								def itemSummaryField = uicomponent.getSummaryField(viewNode);
 								def isShowSummary = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_SUMMARY) && itemSummary != null;
-								
+
 								repo = ((ManageableRepository)viewNode.getSession().getRepository()).getConfiguration().getName();
 					      workspace = viewNode.getSession().getWorkspace().getName();
 					      uuid = viewNode.getUUID();
-								
+
 								%>
-								
+
 								<%=uicomponent.addQuickEditDiv("Column1 media " + ((i%2==1)?"odd":"even"), viewNode)%>
 								<div class="media-inner">
-										 
+
 											<%if (isShowImage) {
                         %><a class="image pull-left" rel="tooltip" data-placement="bottom" title="$itemName"><img class="media-object" alt="$itemName" rel="tooltip" data-placement="bottom" title="$itemName" src="$imgSrc" /></a><%
 											}
@@ -101,12 +101,12 @@
   															%><div class="heading">
   															<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14.851 11.923c-.179-.641-.521-1.246-1.025-1.749-1.562-1.562-4.095-1.563-5.657 0l-4.998 4.998c-1.562 1.563-1.563 4.095 0 5.657 1.562 1.563 4.096 1.561 5.656 0l3.842-3.841.333.009c.404 0 .802-.04 1.189-.117l-4.657 4.656c-.975.976-2.255 1.464-3.535 1.464-1.28 0-2.56-.488-3.535-1.464-1.952-1.951-1.952-5.12 0-7.071l4.998-4.998c.975-.976 2.256-1.464 3.536-1.464 1.279 0 2.56.488 3.535 1.464.493.493.861 1.063 1.105 1.672l-.787.784zm-5.703.147c.178.643.521 1.25 1.026 1.756 1.562 1.563 4.096 1.561 5.656 0l4.999-4.998c1.563-1.562 1.563-4.095 0-5.657-1.562-1.562-4.095-1.563-5.657 0l-3.841 3.841-.333-.009c-.404 0-.802.04-1.189.117l4.656-4.656c.975-.976 2.256-1.464 3.536-1.464 1.279 0 2.56.488 3.535 1.464 1.951 1.951 1.951 5.119 0 7.071l-4.999 4.998c-.975.976-2.255 1.464-3.535 1.464-1.28 0-2.56-.488-3.535-1.464-.494-.495-.863-1.067-1.107-1.678l.788-.785z"/></svg>
   															<a href="$itemLink" rel="tooltip" data-placement="bottom" title="$itemName" target="_blank">$itemName</a></div><%
-  														} else {												  
+  														} else {
   														%>
-  				                      <div class="heading">  				                     
+  				                      <div class="heading">
   				                        <% print uicomponent.getInlineEditingField(viewNode, "exo:title", itemName, "TEXT", "CLVTitle_"+String.valueOf(i), "GroovyCLVTitle", true, "button_direction=left-to-right","fast_publish=" + uicomponent.getFastPublicLink(viewNode));%>
   				                      </div>
-  				                    <%	
+  				                    <%
   													  }
   												  }
   											  }
@@ -116,25 +116,25 @@
                                 %><div class="heading WCMInlineEditable" contenteditable="true" propertyName="<%=propertyName%>" publishedmsg="<%=publishedMsg%>" draftmsg="<%=draftMsg%>" repo="<%=repo%>" workspace="<%=workspace%>" uuid="<%=uuid%>" siteName="<%=siteName%>" language="<%=language%>" fastpublishlink="<%=uicomponent.getFastPublicLink(viewNode)%>"><a href="$itemLink" rel="tooltip" data-placement="bottom" title="$itemName">$itemName</a></div><%
                               } else {
                               %>
-                                <div class="heading WCMInlineEditable" contenteditable="true" propertyName="<%=propertyName%>" publishedmsg="<%=publishedMsg%>" draftmsg="<%=draftMsg%>" repo="<%=repo%>" workspace="<%=workspace%>" uuid="<%=uuid%>" siteName="<%=siteName%>" language="<%=language%>" fastpublishlink="<%=uicomponent.getFastPublicLink(viewNode)%>"> 
+                                <div class="heading WCMInlineEditable" contenteditable="true" propertyName="<%=propertyName%>" publishedmsg="<%=publishedMsg%>" draftmsg="<%=draftMsg%>" repo="<%=repo%>" workspace="<%=workspace%>" uuid="<%=uuid%>" siteName="<%=siteName%>" language="<%=language%>" fastpublishlink="<%=uicomponent.getFastPublicLink(viewNode)%>">
                                   <% print uicomponent.getInlineEditingField(viewNode, "exo:title", itemName, "TEXT", "CLVTitle_"+String.valueOf(i), "GroovyCLVTitle", true, "button_direction=left-to-right","fast_publish=" + uicomponent.getFastPublicLink(viewNode)); %>
                                 </div>
-                              <%  
+                              <%
                               }
                             }
 													}
-																										
+
 													if (isShowDate) {
 													  %><div class="dateAndMail">$itemDateCreated by $itemOwner</div><%
 													}
-													if (isShowSummary) { 
+													if (isShowSummary) {
 														%><div class="summary content-display">
 														<%
 												  		if (itemSummaryField!=null) {
                                 print uicomponent.getInlineEditingField(viewNode, itemSummaryField, itemSummary, "TEXTAREA", "Text_"+String.valueOf(i), "CLV1ColumnPresent", true,"fast_publish=" + uicomponent.getFastPublicLink(viewNode));
                               }
                             %>
-														</div><% 
+														</div><%
 													}
 													if (isShowReadmore) {
 													  %><div class="readLink"><a href="$itemLink" rel="tooltip" data-placement="bottom" title="<%= _ctx.appRes("UICLVPresentation.label.readmore") %>"><%= _ctx.appRes("UICLVPresentation.label.readmore") %></a></div><%
@@ -151,99 +151,35 @@
 					<%
 					String labelRefreshAction = _ctx.appRes("UICLVPresentation.action.refresh");
 		  			def isShowRefresh = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_REFRESH_BUTTON);
-					
+
 					%>
-					
+
 					<%
-		  				
+
       					if (isShowRefresh) { %>
 						<div class="captionFunc clearfix">
 					<%
 							String link = uicomponent.event("Refresh");
-					%>				
+					%>
 							<div class="captionRefresh pull-left">
 								<a href="$link" class="btn" rel="tooltip" data-placement="bottom" title="$labelRefreshAction">$labelRefreshAction</a>
 							</div>
-							
-					</div>	
-						<% 
+
+					</div>
+						<%
 						}
-						if (uicomponent.showPaginator()) {%>	
-						<div class="paginatorDefault">	
-							<% 	uicomponent.renderChild(UICustomizeablePaginator.class);%>	
+						if (uicomponent.showPaginator()) {%>
+						<div class="paginatorDefault">
+							<% 	uicomponent.renderChild(UICustomizeablePaginator.class);%>
 						</div>
 					<% } %>
-						
-								
+
+
 			  	</div>
-			  <%	
+			  <%
 			}
 		%>
 
 	</div>
 </div>
 
-<style>
-
-#importantLinksContainer .uiBox .title {
-    background: transparent;
-    font-size: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-    color: #252525;
-    margin-bottom: 10px;
-    position: relative;
-}
-
-#importantLinksContainer .uiBox {
-    box-shadow: 0 2px 12px 0 #dfe3eb;
-    border-radius: 6px;
-}
-
-#importantLinksContainer .uiBox .title:after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 4px;
-    background: #ffcb08;
-    bottom: 0;
-    left: 8px;
-}
-
-#importantLinksContainer .uiBox .media-inner {
-    border-bottom: 1px dashed #e5e5e5;
-    padding-bottom: 5px;
-}
-
-#importantLinksContainer .uiBox .media-inner .heading a {
-    color: #2e2e2e;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-}
-
-#importantLinksContainer .uiBox .media:last-child .media-inner {
-    border-bottom: none!important;
-}
-
-#importantLinksContainer .uiBox .media,#importantLinksContainer .uiBox .media .media {
-    margin-top: 8px;
-}
-.heading svg {
-    margin-right: 10px;
-}
-
-#importantLinksContainer .uiBox .media-inner .heading {
-    transition: all .6s;
-    display: flex;
-}
-
-#importantLinksContainer .uiBox .media-inner .heading:hover a {
-    color: #ffcb08;
-}
-
-#importantLinksContainer .uiBox .media-inner .heading:hover svg {
-    fill: #ffcb08;
-}
-
-</style>
