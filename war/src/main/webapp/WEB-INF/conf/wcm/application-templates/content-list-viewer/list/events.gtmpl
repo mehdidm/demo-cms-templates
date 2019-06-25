@@ -418,8 +418,8 @@ a.seeAllEvents {
                             </div>
                             <div class="sliderButton">
                                <p class="voirTousEvents">
-                                 <a onclick="window.open('/portal/intranet/allEvents');" class="seeAllEvents">
-                                    <span>Voir tout</span><em></em>
+                                 <a onclick="window.open('/portal/intranet/events');" class="seeAllEvents">
+                                    <span>See All</span><em></em>
                                  </a>
                              </p>
                             </div>

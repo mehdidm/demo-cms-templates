@@ -38,7 +38,7 @@ def isShowHeader = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_HEADER) 
 		</div>
 
 		<div class="read-all-news">
-			<a class="see-all-news" onclick="window.open('/portal/intranet/allList');">Voir tout</a>
+			<a class="see-all-news" onclick="window.open('/portal/intranet/news');">See all news</a>
 		</div>
 
 	</div>
