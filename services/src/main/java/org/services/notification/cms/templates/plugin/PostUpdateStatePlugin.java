@@ -100,7 +100,7 @@ public class PostUpdateStatePlugin extends BaseNotificationPlugin {
     // remove redondance
     Set<String> receiversSet = new HashSet<String>(receiversIds);
 
-    if (contentStatus.equals(PublicationDefaultStates.DRAFT)) {
+    if (contentStatus.equals(PublicationDefaultStates.DRAFT) || contentStatus.equals(PublicationDefaultStates.PENDING)) {
       receiversSet.remove(contentUpdater);
     }
     // convert the set to List to be used after in to method
@@ -134,7 +134,7 @@ public class PostUpdateStatePlugin extends BaseNotificationPlugin {
 
     if (contentStatus.equals(PublicationDefaultStates.PENDING)) {
       for (State state : stateList) {
-        if (state.getState().equals(contentStatus) || state.getState().equals(PublicationDefaultStates.APPROVED)) {
+        if (state.getState().equals(PublicationDefaultStates.APPROVED)) {
 
           receivers = this.getAllUsersByState(state, receivers);
         }
@@ -154,9 +154,7 @@ public class PostUpdateStatePlugin extends BaseNotificationPlugin {
     }
     if (contentStatus.equals(PublicationDefaultStates.STAGED)) {
       for (State state : stateList) {
-        if (state.getState().equals(contentStatus) || state.getState().equals(PublicationDefaultStates.PENDING)
-            || state.getState().equals(PublicationDefaultStates.APPROVED)
-            || state.getState().equals(PublicationDefaultStates.PUBLISHED)) {
+        if (state.getState().equals(PublicationDefaultStates.PUBLISHED)) {
 
           receivers = this.getAllUsersByState(state, receivers);
         }
