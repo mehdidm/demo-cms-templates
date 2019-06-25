@@ -6,6 +6,7 @@ import org.exoplatform.commons.api.notification.NotificationContext;
 import org.exoplatform.commons.api.notification.model.PluginKey;
 import org.exoplatform.commons.notification.impl.NotificationContextImpl;
 import org.exoplatform.commons.utils.CommonsUtils;
+import org.exoplatform.commons.utils.PropertyManager;
 import org.exoplatform.services.cms.documents.DocumentService;
 import org.exoplatform.services.listener.Event;
 import org.exoplatform.services.listener.Listener;
@@ -28,8 +29,9 @@ public class PostUpdateStateListener extends Listener<Object, Node> {
     String contentUpdater = content.getProperty(NodetypeConstant.EXO_LAST_MODIFIER).getValue().getString();
     String lifecycle = content.getProperty(NotificationConstants.PUBLICATION_LIFECYCLE).getValue().getString();
 
+    String domainName = PropertyManager.getProperty("gatein.email.domain.url");
     DocumentService documentService = (DocumentService) CommonsUtils.getService(DocumentService.class);
-    String contentUrl = documentService.getLinkInDocumentsApp(content.getPath());
+    String contentUrl = domainName + documentService.getLinkInDocumentsApp(content.getPath());
 
     // Send Notification
     NotificationContext ctx = NotificationContextImpl.cloneInstance()

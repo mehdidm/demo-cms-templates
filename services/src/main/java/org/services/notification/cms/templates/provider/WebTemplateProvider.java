@@ -54,6 +54,7 @@ public class WebTemplateProvider extends TemplateProvider {
       String contentUpdater = notification.getValueOwnerParameter(NotificationConstants.CONTENT_UPDATER);
       String contentTitle = notification.getValueOwnerParameter(NotificationConstants.CONTENT_TITLE);
       String contentStatus = notification.getValueOwnerParameter(NotificationConstants.CONTENT_STATUS);
+      String contentUrl = notification.getValueOwnerParameter(NotificationConstants.CONTENT_URL);
 
       EntityEncoder encoder = HTMLEntityEncoder.getInstance();
       IdentityManager identityManager = CommonsUtils.getService(IdentityManager.class);
@@ -73,6 +74,7 @@ public class WebTemplateProvider extends TemplateProvider {
       templateContext.put("CONTENT_TITLE", encoder.encode(contentTitle));
       templateContext.put("CONTENT_STATUS", encoder.encode(contentStatus));
       templateContext.put("CONTENT_UPDATER", encoder.encode(contentUpdater));
+      templateContext.put("CONTENT_URL", encoder.encode(contentUrl));
 
       templateContext.put("READ",
                           Boolean.valueOf(notification.getValueOwnerParameter(NotificationMessageUtils.READ_PORPERTY.getKey())) ? "read"

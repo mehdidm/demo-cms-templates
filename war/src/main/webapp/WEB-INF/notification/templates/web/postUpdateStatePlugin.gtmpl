@@ -24,7 +24,7 @@
    description = _ctx.appRes("Notification.message.PostUpdateStatePlugin.created",creator, CONTENT_TITLE);
 }
       %>
-      <div class="contentSmall" data-link="$URL">
+      <div class="contentSmall" data-link="$CONTENT_URL">
         <div class="status">$description</div>
         <div class="content">$CONTENT_TITLE</div>
         <div class="lastUpdatedTime">$LAST_UPDATED_TIME</div>
