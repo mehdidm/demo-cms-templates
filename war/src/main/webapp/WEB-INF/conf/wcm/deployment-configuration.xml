@@ -329,6 +329,32 @@
                 </object-param>
 
                 <object-param>
+                    <name>Home Page3 Styles</name>
+                    <description>Deployment Descriptor</description>
+                    <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
+                        <field name="target">
+                            <object type="org.exoplatform.services.deployment.DeploymentDescriptor$Target">
+                                <field name="workspace">
+                                    <string>collaboration</string>
+                                </field>
+                                <field name="nodePath">
+                                    <string>/sites/intranet/css</string>
+                                </field>
+                            </object>
+                        </field>
+                        <field name="sourcePath">
+                            <string>war:/conf/wcm/artifacts/home3CSS.xml</string>
+                        </field>
+                        <field name="cleanupPublication">
+                            <boolean>true</boolean>
+                        </field>
+                        <field name="cleanupPublicationType">
+                            <string>publish-first-publication</string>
+                        </field>
+                    </object>
+                </object-param>
+
+                <object-param>
                     <name>Upcoming Events style</name>
                     <description>Deployment Descriptor</description>
                     <object type="org.exoplatform.services.wcm.extensions.deployment.WCMPublicationDeploymentDescriptor">
