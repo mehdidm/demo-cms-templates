@@ -26,7 +26,7 @@
     <access-permissions>*:/platform/users</access-permissions>
     <edit-permission>*:/platform/administrators</edit-permission>
     <show-max-window>false</show-max-window>
-    <container id="BlogLeft" template="system:/groovy/portal/webui/container/UIResponsiveColumnContainer.gtmpl">
+    <container id="eventsList" template="system:/groovy/portal/webui/container/UIResponsiveColumnContainer.gtmpl">
       <access-permissions>Everyone</access-permissions>
       <portlet-application>
         <portlet>
@@ -119,6 +119,7 @@
     <access-permissions>*:/platform/users</access-permissions>
     <edit-permission>*:/platform/administrators</edit-permission>
     <show-max-window>false</show-max-window>
+    <container id="newsList" template="system:/groovy/portal/webui/container/UIResponsiveColumnContainer.gtmpl">
     <portlet-application>
       <portlet>
         <application-ref>presentation</application-ref>
@@ -202,5 +203,6 @@
       <show-application-state>false</show-application-state>
       <show-application-mode>false</show-application-mode>
     </portlet-application>
+    </container>
   </page>
 </page-set>
