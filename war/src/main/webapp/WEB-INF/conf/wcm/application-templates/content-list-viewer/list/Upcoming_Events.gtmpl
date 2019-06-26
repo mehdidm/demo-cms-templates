@@ -22,23 +22,8 @@ def language = locale.getLanguage();
 def draftMsg = _ctx.appRes("PublicationStates.draft");
 def publishedMsg = _ctx.appRes("PublicationStates.published");
 %>
- <style>
- .circleDate{
-    border-radius: 50%;
-    background-color: #6c6cff;
-    width: 50px;
-    height: 50px;
-    color: white;
-    text-align: center;
-    font-size: 13px;
-    margin-top: 3px;
- }
- .media-body {
-   padding-left: 10px;
-   }
- </style>
 <div id="$uicomponent.id" class="oneColumnCLVTemplate">
-    <div class="clv uiBox">
+    <div class="clv uiBox upcomingEventBox">
         <%
         def header = uicomponent.getHeader();
         def isShowHeader = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_HEADER) && header != null && header.trim().length() != 0;
@@ -73,8 +58,12 @@ def publishedMsg = _ctx.appRes("PublicationStates.published");
             def itemLink = uicomponent.getURL(viewNode);
             def itemOwner = uicomponent.getAuthor(viewNode);
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            def eventDate = dateFormat.format(viewNode.getProperty("exo:eventDate").getDate().getTime());
+             uicomponent.setDateTimeFormat("dd/MMM/yyyy");
+             def itemDateCreated = uicomponent.getCreatedDate(viewNode);
+             int slashIndex1 = itemDateCreated.indexOf('/');
+             int slashIndex2 = itemDateCreated.lastIndexOf('/');
+             def itemCreatedDay = itemDateCreated.substring(0, slashIndex1);
+             def itemCreatedMonth = itemDateCreated.substring(slashIndex1 + 1, slashIndex2);
 
             def imgSrc = uicomponent.getIllustrativeImage(viewNode);
 
@@ -92,12 +81,17 @@ def publishedMsg = _ctx.appRes("PublicationStates.published");
 
             <%=uicomponent.addQuickEditDiv("Column1 media " + ((i%2==1)?"odd":"even"), viewNode)%>
             <div class="media-inner">
-                <div class="circleDate pull-left">$eventDate</div>
+                <div class="circleDate pull-left">
+                 <p>
+                    <time datetime="2013-01-01" class="event-day">$itemCreatedDay</time>
+                    <span class="event-month">$itemCreatedMonth</span>
+                  </p>
+                </div>
                 <div class="media-body">
                     <%
                     if (uicomponent.isViewMode()){
                     %>
-                    <div class="heading"><a href="$itemLink" data-placement="bottom" title="$itemName">$itemName</a></div>
+                    <div class="heading"><a href="$itemLink" data-placement="bottom" title="$itemName" class="event-title">$itemName</a></div>
                     <%}
                     else {
                     %>
