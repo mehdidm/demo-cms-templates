@@ -8,10 +8,12 @@ import org.exoplatform.commons.notification.impl.NotificationContextImpl;
 import org.exoplatform.commons.utils.CommonsUtils;
 import org.exoplatform.commons.utils.PropertyManager;
 import org.exoplatform.services.cms.documents.DocumentService;
+import org.exoplatform.services.cms.drives.DriveData;
 import org.exoplatform.services.listener.Event;
 import org.exoplatform.services.listener.Listener;
 import org.exoplatform.services.log.ExoLogger;
 import org.exoplatform.services.log.Log;
+import org.exoplatform.services.security.ConversationState;
 import org.exoplatform.services.wcm.core.NodetypeConstant;
 import org.exoplatform.services.wcm.extensions.publication.lifecycle.authoring.AuthoringPublicationConstant;
 import org.services.notification.cms.templates.plugin.PostUpdateStatePlugin;
@@ -31,17 +33,36 @@ public class PostUpdateStateListener extends Listener<Object, Node> {
 
     String domainName = PropertyManager.getProperty("gatein.email.domain.url");
     DocumentService documentService = (DocumentService) CommonsUtils.getService(DocumentService.class);
-    String contentUrl = domainName + documentService.getLinkInDocumentsApp(content.getPath());
+    
+    if (content.getPath() != null) {
+      String contentUrl = domainName;
+      String contentPath = content.getPath();
+      if (ConversationState.getCurrent() != null) {
+        if (ConversationState.getCurrent().getIdentity() != null) {
+          String userId = ConversationState.getCurrent().getIdentity().getUserId();
+          if (userId != null) {
+            DriveData driveData = documentService.getDriveOfNode(contentPath);
+            if (driveData != null) {
+              if (documentService.getLinkInDocumentsApp(content.getPath()) != null) {
+                contentUrl = contentUrl + documentService.getLinkInDocumentsApp(contentPath);
+                // Send Notification
+                NotificationContext ctx = NotificationContextImpl.cloneInstance()
+                                                                 .append(PostUpdateStatePlugin.CONTENT_TITLE, contentTitle)
+                                                                 .append(PostUpdateStatePlugin.CONTENT_STATUS, contentStatus)
+                                                                 .append(PostUpdateStatePlugin.CONTENT_UPDATER, contentUpdater)
+                                                                 .append(PostUpdateStatePlugin.PUBLICATION_LIFECYCLE, lifecycle)
+                                                                 .append(PostUpdateStatePlugin.CONTENT_URL, contentUrl);
+                ctx.getNotificationExecutor().with(ctx.makeCommand(PluginKey.key(PostUpdateStatePlugin.ID))).execute(ctx);
+                LOG.info("A notification was sent");
 
-    // Send Notification
-    NotificationContext ctx = NotificationContextImpl.cloneInstance()
-                                                     .append(PostUpdateStatePlugin.CONTENT_TITLE, contentTitle)
-                                                     .append(PostUpdateStatePlugin.CONTENT_STATUS, contentStatus)
-                                                     .append(PostUpdateStatePlugin.CONTENT_UPDATER, contentUpdater)
-                                                     .append(PostUpdateStatePlugin.PUBLICATION_LIFECYCLE, lifecycle)
-                                                     .append(PostUpdateStatePlugin.CONTENT_URL, contentUrl);
-    ctx.getNotificationExecutor().with(ctx.makeCommand(PluginKey.key(PostUpdateStatePlugin.ID))).execute(ctx);
-    LOG.info("notification was sent");
+              }
+            }
+          }
+        }
+      }
+
+    }
+
   }
 
 }
