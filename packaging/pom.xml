@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.exoplatform.addons.demo</groupId>
     <artifactId>demo-cms-templates</artifactId>
-    <version>1.0.x-SNAPSHOT</version>
+    <version>1.0.1</version>
   </parent>
   <artifactId>demo-cms-templates-packaging</artifactId>
   <packaging>pom</packaging>
@@ -13,14 +13,14 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>demo-cms-templates-war</artifactId>
-      <version>1.0.x-SNAPSHOT</version>
+      <version>1.0.1</version>
       <type>war</type>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>demo-cms-templates-services</artifactId>
-      <version>1.0.x-SNAPSHOT</version>
+      <version>1.0.1</version>
       <type>jar</type>
       <scope>provided</scope>
     </dependency>
