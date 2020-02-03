@@ -95,14 +95,14 @@
 					</object>
 				</object-param>
 				<object-param>
-					<name>CMS Blog Template</name>
+					<name>CMS LINKS Template</name>
 					<object
 						type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
 						<field name="title">
-							<string>CMS Blog Template</string>
+							<string>CMS LINKS Template</string>
 						</field>
 						<field name="templateName">
-							<string>cmsTemplatesBlog.gtmpl</string>
+							<string>cmsTemplateslinks.gtmpl</string>
 						</field>
 						<field name="category">
 							<string>list</string>
@@ -155,14 +155,14 @@
           </object>
         </object-param>
         <object-param>
-          <name>Display Two Columns</name>
-          <description>Display Two Columns</description>
+          <name>news</name>
+          <description>news</description>
           <object type="org.exoplatform.services.cms.views.PortletTemplatePlugin$PortletTemplateConfig">
             <field name="title">
-              <string>Display Two Columns</string>
+              <string>news</string>
             </field>
             <field name="templateName">
-              <string>DisplayTwoColumns.gtmpl</string>
+              <string>news.gtmpl</string>
             </field>
             <field name="category">
               <string>list</string>
