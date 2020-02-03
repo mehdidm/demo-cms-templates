@@ -22,34 +22,96 @@ def language = locale.getLanguage();
 def draftMsg = _ctx.appRes("PublicationStates.draft");
 def publishedMsg = _ctx.appRes("PublicationStates.published");
 %>
-<div id="$uicomponent.id" class="oneColumnCLVTemplate">
-    <div class="clv uiBox upcomingEventBox">
-        <%
+<style>.circleDate {
+    border-radius: 50%;
+    background-color: #6c6cff;
+    width: 50px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.circleDate p {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+time.event-day {
+    display: block;
+}
+
+.media-body {
+    padding-left: 10px;
+}
+
+span.event-month {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.event-title {
+    color: #2e2e2e;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: normal!important;
+}
+
+a.event-title:hover {
+    color: #ffcb08!important;
+}
+
+.upcomingEventBox h5 {
+    background: transparent;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #252525;
+    margin-bottom: 10px;
+    position: relative;
+    background-color: transparent!important
+}
+
+.upcomingEventBox h5:after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background: #ffcb08;
+    bottom: 0;
+    left: 8px;
+}</style>
+    <div id="$uicomponent.id" class="oneColumnCLVTemplate">
+        <div class="clv uiBox upcomingEventBox">
+            <%
         def header = uicomponent.getHeader();
         def isShowHeader = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_HEADER) && header != null && header.trim().length() != 0;
         %>
 
-        <%
+                <%
         if (isShowHeader) {
         %>
-        <h5 class="title">
-           <span>$header</span>
-        </h5>
-        <% }
+                    <h5 class="title">
+                        <span>$header</span>
+                    </h5>
+                    <% }
 
 
         if (uicomponent.getUIPageIterator().getAvailable() == 0) {
         %>
-        <div class="emptyContent">
-            <span><%= _ctx.appRes(uicomponent.getParent().getMessageKey()) %></span>
-        </div>
-        <%
+                        <div class="emptyContent">
+                            <span><%= _ctx.appRes(uicomponent.getParent().getMessageKey()) %></span>
+                        </div>
+                        <%
         } else {
         def currentPageData = uicomponent.getCurrentPageData();
         def i =0;
         %>
-        <div class="uiContentBox">
-            <%
+                            <div class="uiContentBox">
+                                <%
             for (viewNode in currentPageData) {
             if(!Utils.isViewable(viewNode)) continue;
             i++;
@@ -79,65 +141,66 @@ def publishedMsg = _ctx.appRes("PublicationStates.published");
 
             %>
 
-            <%=uicomponent.addQuickEditDiv("Column1 media " + ((i%2==1)?"odd":"even"), viewNode)%>
-            <div class="media-inner">
-                <div class="circleDate pull-left">
-                 <p>
-                    <time datetime="2013-01-01" class="event-day">$itemCreatedDay</time>
-                    <span class="event-month">$itemCreatedMonth</span>
-                  </p>
-                </div>
-                <div class="media-body">
-                    <%
+                                    <%=uicomponent.addQuickEditDiv("Column1 media " + ((i%2==1)?"odd":"even"), viewNode)%>
+                                        <div class="media-inner">
+                                            <div class="circleDate pull-left">
+                                                <p>
+                                                    <time datetime="2013-01-01" class="event-day">$itemCreatedDay</time>
+                                                    <span class="event-month">$itemCreatedMonth</span>
+                                                </p>
+                                            </div>
+                                            <div class="media-body">
+                                                <%
                     if (uicomponent.isViewMode()){
                     %>
-                    <div class="heading"><a href="$itemLink" data-placement="bottom" title="$itemName" class="event-title">$itemName</a></div>
-                    <%}
+                                                    <div class="heading"><a href="$itemLink" data-placement="bottom" title="$itemName" class="event-title">$itemName</a></div>
+                                                    <%}
                     else {
                     %>
-                    <div class="heading WCMInlineEditable" contenteditable="true" propertyName="<%=propertyName%>" publishedmsg="<%=publishedMsg%>" draftmsg="<%=draftMsg%>" repo="<%=repo%>" workspace="<%=workspace%>" uuid="<%=uuid%>" siteName="<%=siteName%>" language="<%=language%>" fastpublishlink="<%=uicomponent.getFastPublicLink(viewNode)%>"><a href="$itemLink" rel="tooltip" data-placement="bottom" title="$itemName">$itemName</a></div>
-                    <%
+                                                        <div class="heading WCMInlineEditable" contenteditable="true" propertyName="<%=propertyName%>" publishedmsg="<%=publishedMsg%>" draftmsg="<%=draftMsg%>" repo="<%=repo%>" workspace="<%=workspace%>" uuid="<%=uuid%>" siteName="<%=siteName%>" language="<%=language%>"
+                                                            fastpublishlink="<%=uicomponent.getFastPublicLink(viewNode)%>"><a href="$itemLink" rel="tooltip" data-placement="bottom" title="$itemName">$itemName</a></div>
+                                                        <%
                     }
                     %>
-                </div>
-                <%
+                                            </div>
+                                            <%
                 %>
-            </div>
-        </div>
-        <%
+                                        </div>
+                            </div>
+                            <%
         }
         %>
-        <%
+                                <%
         String labelRefreshAction = _ctx.appRes("UICLVPresentation.action.refresh");
         def isShowRefresh = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_REFRESH_BUTTON);
 
         %>
 
-        <%
+                                    <%
 
         if (isShowRefresh) { %>
-        <div class="captionFunc clearfix">
-            <%
+                                        <div class="captionFunc clearfix">
+                                            <%
             String link = uicomponent.event("Refresh");
             %>
-            <div class="captionRefresh pull-left">
-                <a href="$link" class="btn" rel="tooltip" data-placement="bottom" title="$labelRefreshAction">$labelRefreshAction</a>
-            </div>
+                                                <div class="captionRefresh pull-left">
+                                                    <a href="$link" class="btn" rel="tooltip" data-placement="bottom" title="$labelRefreshAction">$labelRefreshAction</a>
+                                                </div>
+
+                                        </div>
+                                        <%
+        }
+        if (uicomponent.showPaginator()) {%>
+                                            <div class="paginatorDefault">
+                                                <% uicomponent.renderChild(UICustomizeablePaginator.class);%>
+                                            </div>
+                                            <% } %>
+
 
         </div>
         <%
-        }
-        if (uicomponent.showPaginator()) {%>
-        <div class="paginatorDefault">
-            <% uicomponent.renderChild(UICustomizeablePaginator.class);%>
-        </div>
-        <% } %>
-
-
-    </div>
-    <%
     }
     %>
 
-</div>
-</div>
+    </div>
+    </div>

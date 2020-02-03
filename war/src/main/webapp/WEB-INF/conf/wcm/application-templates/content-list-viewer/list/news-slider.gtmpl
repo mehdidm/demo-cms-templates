@@ -24,6 +24,351 @@
 		})
 	});
 </script>
+<style>.news-contentLeft {
+    margin: 0 10px;
+    transition: all 1s ease;
+}
+.news-contentLeft .contentText {
+    width: 90%
+}
+
+.news-contentRight {
+    margin: 0 10px;
+}
+
+.news-content {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 330px;
+}
+
+.news-contentRight {
+    height: 100%;
+    flex: 1 1 50%;
+    position: relative;
+}
+
+.news-line {
+    height: 100px;
+    display: inline-flex;
+    margin-bottom: 15px;
+}
+
+.news-contentLeft {
+    height: 100%;
+    position: relative;
+    flex: 1 1 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.news-image {
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.rightText {
+    width: 100%;
+}
+
+.backgroundLeft {
+    width: 100%;
+    height: 330px;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 1s ease;
+}
+
+.contentText {
+    position: absolute;
+    bottom: 0;
+}
+
+.news-line:last-child {
+    margin-bottom: 0px;
+}
+
+.contentText {
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0));
+    height: 180px;
+    padding: 0 20px;
+    color: #fff;
+    transition: all 1s ease;
+}
+
+.contentTitle {
+    padding-top: 70px;
+}
+
+.contentTitle a {
+    color: #ffcb08!important;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.news-contentLeft:hover .backgroundLeft {
+    transform: scale(1.2);
+}
+
+.news-contentLeft:hover .contentText {
+    height: 100%;
+}
+
+.news-contentLeft:hover .contentTitle {
+    padding-top: 25%;
+}
+
+.read-more-news {
+    position: relative;
+    margin: auto;
+    padding: 5px 0;
+    transition: all .2s ease;
+}
+
+.read-more-news span {
+    position: relative;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    vertical-align: middle;
+    color: #385989;
+}
+
+.read-more-news:hover span {
+    color: #ffcb08;
+}
+
+.read-more-news:before {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    display: block;
+    border-radius: 28px;
+    background: #476a9c;
+    width: 20px;
+    height: 2px;
+    transition: all .3s ease;
+}
+
+.read-more-news:hover:before {
+    width: 100%;
+    background: #ffcb08;
+}
+
+.rightTitle a {
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    color: #2d3138;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.slide-read-more span {
+    color: #ffcb08;
+}
+
+.slide-read-more:before {
+    background: #ffcb08;
+}
+
+.rightBody p {
+    font-size: 13px;
+    letter-spacing: .2px;
+    line-height: 18px;
+    height: 36px;
+    overflow: hidden;
+}
+
+
+#firstLigneContainerHome2 {
+    padding: 30px;
+}
+
+.news-title-top {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #252525;
+    position: relative;
+    margin-bottom: 40px ;
+    
+}
+
+.news-title-top:after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background: #ffcb08;
+    bottom: -5px;
+    left: 0;
+}
+
+.news-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom:  :30px ;
+  
+    
+}
+
+.see-all-news {
+    color: #2d3138;
+    padding: 8px 20px;
+    background: #ffcb08;
+    text-shadow: none;
+    border: 2px solid #ffcb08;
+    border-radius: 26px;
+    letter-spacing: 3px;
+    transition: all .5s;
+    cursor: pointer;
+    margin-right: 15px ;
+ 
+}
+
+.see-all-news:hover {
+    color: #ffcb08;
+    border: 2px solid #ffcb08;
+    cursor: pointer;
+    background: transparent;
+}
+
+#secondLigneContainerHome2 .twoColumnsCLVTemplate {
+    margin: 0;
+}
+
+#secondLigneContainerHome2 .uiBox .title {
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #252525;
+    position: relative;
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
+#secondLigneContainerHome2 .uiBox .title:after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background: #ffcb08;
+    bottom: -5px;
+    left: 10px;
+}
+
+
+.UICLVPortlet {
+     background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    padding: 25px ;
+    margin: 50px ;
+    }
+
+ 
+
+#secondLigneContainerHome2 .uiBox .title:a {
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: #252525;
+    position: relative;
+}
+
+#secondLigneContainerHome2 .DisplayTwoColumnsContainerTDContainer {
+    padding-right: 20px;
+}
+
+@media (max-width: 992px) {
+    .news-content {
+        align-items: flex-start;
+        height: auto;
+    }
+    .news-line {
+        height: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .news-content {
+        display: block;
+        height: auto;
+    }
+    .news-contentRight {
+        margin-top: 20px;
+    }
+    .RightBodyTDContainer .UIContainer {
+        padding: 55px 25px ;  
+        
+        
+       }
+    .news-contentLeft .contentTitle,
+    .news-contentLeft .contentBody {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .backgroundLeft {
+        height: 270px;
+    }
+    td.secondcolumnContainerHome2TDContainer.TDContainer {
+        width: 100%;
+        float: left;
+        display: block;
+    }
+    td.DisplayTwoColumnsContainerTDContainer.TDContainer {
+        width: 100%;
+        float: left;
+        display: block;
+    }
+}
+
+@media (max-width: 390px) {
+    .news-line {
+        display: block;
+    }
+    .news-image {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .news-line {
+        margin-bottom: 20px;
+    }
+    .rightMore {
+        padding-top: 0!important;
+    }
+}</style>
 
 <%
 def header = uicomponent.getHeader();

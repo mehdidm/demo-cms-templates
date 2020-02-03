@@ -10,27 +10,345 @@ import java.util.Comparator;
 import javax.jcr.Node;
 %>
 
-<script>
-require( ["SHARED/jquery", "SHARED/bootstrap", "SHARED/bts_carousel" ], function(jQuery){
-	   jQuery(document).ready(function () {
-		   jQuery('.carousel').carousel({
-			   interval: 6000
-			  });
+    <script>
+        require(["SHARED/jquery", "SHARED/bootstrap", "SHARED/bts_carousel"], function(jQuery) {
+            jQuery(document).ready(function() {
+                jQuery('.carousel').carousel({
+                    interval: 6000
+                });
 
-	   });
+            });
 
-	   });
+        });
+    </script>
+    <style>
+    .imgContainerOption2 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+}
 
-</script>
-<%
+#eventAlAUne .carousel-caption {
+    position: absolute !important;
+}
+
+#eventAlAUne .carousel-indicators li {
+    width: 20px;
+    height: 6px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#eventAlAUne .carousel-indicators {
+    position: absolute;
+    top: inherit;
+    left: 10px;
+    bottom: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#eventAlAUne .carousel-indicators .active {
+    background-color: #fdc228;
+}
+
+#eventAlAUne .slider-size {
+    height: 250px;
+}
+
+#eventAlAUne .carousel {
+    width: 100%;
+    margin: 0 auto;
+    /* center your carousel if other than 100% */
+    box-shadow: none;
+}
+
+div#eventAlAUne {
+    position: relative;
+    margin-bottom: 20px;
+    line-height: 1;
+    box-shadow: none;
+    margin-top: -1px;
+    margin-left: -1px;
+    margin-right: -2px;
+}
+
+#eventAlAUne .carousel-control {
+    background: transparent;
+    border: none;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    margin-top: -20px;
+    font-size: 60px;
+    font-weight: 100;
+    line-height: 25px;
+    color: #ffcb08;
+    text-align: center;
+    background: #222222;
+    border: 3px solid #ffffff;
+    border-radius: 0;
+    opacity: 1;
+    filter: alpha(opacity=50);
+    text-shadow: 0px 0px 20px black;
+}
+
+.carousel-control.right {
+    left: auto;
+    right: 10px;
+}
+
+.caption-title {
+    color: #ffcb08!important;
+    text-transform: uppercase;
+    font-size: 21px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-bottom: 10px!important;
+}
+
+.caption-description {
+    color: #a3a3a3!important;
+    font-size: 16px;
+}
+
+.blog-button {
+    position: relative;
+    margin: auto;
+    padding: 5px 0px;
+    transition: all .2s ease;
+}
+
+.blog-button:before {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    display: block;
+    border-radius: 28px;
+    background: rgb(255, 203, 8);
+    width: 20px;
+    height: 2px;
+    transition: all .3s ease;
+}
+
+.blog-button span {
+    position: relative;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: .5px;
+    vertical-align: middle;
+    color: #ffcb08;
+}
+
+.blog-button:hover:before {
+    width: 100%;
+    background: #ffcb08;
+}
+
+.blog-button:hover span {
+    color: #ffcb08;
+}
+
+.carousel {
+    position: relative;
+    margin-bottom: 20px;
+    line-height: 1;
+    box-shadow: 0px 0px 7px 0px #e0e0e0;
+}
+
+.voirTousEvents {
+    margin-bottom: 0;
+}
+
+.voirTousEvents {
+    padding-right: 15px;
+    position: relative;
+}
+
+@media (max-width: 460px) {
+    #eventAlAUne .carousel-indicators {
+        position: relative;
+    }
+}
+
+.carousel-caption p {
+    margin-bottom: 0;
+    text-shadow: 0 0 8px black;
+}
+
+.caption-description {
+    color: #a3a3a3!important;
+    font-size: 17px;
+    text-shadow: 0 0 5px black;
+}
+
+#eventAlAUne .carousel-caption {
+    text-align: center;
+    top: 20%;
+    bottom: inherit;
+    width: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: none;
+    z-index: 1;
+}
+
+.slider-size:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #0000004d;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+p.voirTousEvents {
+    margin-top: 20px;
+}
+
+a.seeAllEvents {
+    color: #2d3138;
+    padding: 8px 20px;
+    background: #ffcb08;
+    text-shadow: none;
+    border: 2px solid #ffcb08;
+    border-radius: 26px;
+    letter-spacing: 3px;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+.seeAllEvents:hover {
+    color: #ffcb08;
+    padding: 8px 20px;
+    background: #ffffff;
+    text-shadow: none;
+    border: 2px solid #ffffff;
+    border-radius: 26px;
+    letter-spacing: 3px;
+}
+
+p.caption-title:after {
+    content: '';
+    width: 120px;
+    height: 2px;
+    position: absolute;
+    background: #ffcb08;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+}
+
+.caption-title {
+    color: #ffcb08!important;
+    text-transform: uppercase;
+    font-size: 21px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-bottom: 10px!important;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.caption-description p {
+    font-size: 18px;
+    color: #fff!important;
+    letter-spacing: 1px;
+}
+
+div#UIUserActivityStreamPortlet {
+    box-shadow: 0 2px 12px 0 #dfe3eb;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.RightBodyTDContainer {
+    overflow-x: hidden;
+}
+
+div#hponeRightContainer {
+    margin-right: 20px;
+}
+
+td.ASContainerTDContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+div#hpRightContainer {
+    margin-bottom: 30px;
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+    color: #ffcb08;
+    opacity: 1;
+}
+
+@media (max-width: 767px) {
+    .hpRightContainerTDContainer,
+    .ASContainerTDContainer {
+        display: block;
+        padding: 10px 20px;
+        width: auto;
+        float: none;
+    }
+    .caption-description p {
+        font-size: 14px;
+    }
+    .caption-title {
+        font-size: 16px;
+    }
+    a.seeAllEvents {
+        padding: 5px 20px;
+    }
+    #eventAlAUne .carousel-caption {
+        top: 15%;
+        width: 75%;
+    }
+}
+
+@media (max-width: 520px) {
+    .caption-description {
+        display: none;
+    }
+    #eventAlAUne .carousel-caption {
+        top: 23%;
+    }
+    .caption-title {
+        color: #ffffff!important;
+    }
+    p.caption-title:after {
+        display: none;
+    }
+    .caption-title {
+        font-size: 18px;
+    }
+}</style>
+    <%
    def eventsAlaUne = uicomponent.getCurrentPageData();
 %>
 
-<div id="eventAlAUne" class="carousel slide" data-ride="carousel">
+        <div id="eventAlAUne" class="carousel slide" data-ride="carousel">
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        <%
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <%
         def i =0;
 
         for (viewNode in eventsAlaUne) {
@@ -61,44 +379,44 @@ require( ["SHARED/jquery", "SHARED/bootstrap", "SHARED/bts_carousel" ], function
 
         %>
 
-        <% if (i==1){ %>
-        <div class="active item">
-            <% }else{ %>
-            <div class="item">
-                <%} %>
-                <div>
-                    <div style="background:url($imgSrc) center center; background-size:100% 100%;" class="slider-size imgContainerOption2">
-                        <div class="carousel-caption">
-                            <div class="sliderText">
-                            <% if (itemTitle!=null) {%>
-                            <p onclick="location.href='$itemLink';" style="cursor: pointer;" class="caption-title">$itemTitle</p>
-                            <%}%>
-                            <% if (isShowSummary!=null) {%>
-                            <div  style="cursor: pointer;" class="caption-description">$itemSummary</div>
-                            <%}%>
-                            </div>
-                            <div class="sliderButton">
-                               <p class="voirTousEvents">
-                                 <a onclick="window.open('/portal/intranet/events');" class="seeAllEvents">
-                                    <span>See All</span><em></em>
-                                 </a>
-                             </p>
-                            </div>
+                    <% if (i==1){ %>
+                        <div class="active item">
+                            <% }else{ %>
+                                <div class="item">
+                                    <%} %>
+                                        <div>
+                                            <div style="background:url($imgSrc) center center; background-size:100% 100%;" class="slider-size imgContainerOption2">
+                                                <div class="carousel-caption">
+                                                    <div class="sliderText">
+                                                        <% if (itemTitle!=null) {%>
+                                                            <p onclick="location.href='$itemLink';" style="cursor: pointer;" class="caption-title">$itemTitle</p>
+                                                            <%}%>
+                                                                <% if (isShowSummary!=null) {%>
+                                                                    <div style="cursor: pointer;" class="caption-description">$itemSummary</div>
+                                                                    <%}%>
+                                                    </div>
+                                                    <div class="sliderButton">
+                                                        <p class="voirTousEvents">
+                                                            <a onclick="window.open('/portal/intranet/events');" class="seeAllEvents">
+                                                                <span>See All</span><em></em>
+                                                            </a>
+                                                        </p>
+                                                    </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
 
-            <%
+                                <%
             }
             %>
 
-        </div>
-       <!-- Indicators -->
+                        </div>
+                        <!-- Indicators -->
 
-    <ol class="carousel-indicators">
-        <%
+                        <ol class="carousel-indicators">
+                            <%
         def j =0;
 
         for (viewNode in eventsAlaUne) {
@@ -107,15 +425,15 @@ require( ["SHARED/jquery", "SHARED/bootstrap", "SHARED/bts_carousel" ], function
         if(j==7)
         break;
         %>
-        <% if (j==1){ %>
-        <li data-target="#eventAlAUne" data-slide-to="${j-1}" class="active"></li>
-        <% }else{ %>
-        <li data-target="#eventAlAUne" data-slide-to="${j-1 }" class=""></li>
-        <%} %>
-        <%}%>
-    </ol>
-        <!-- Controls -->
-        <a class="left carousel-control" href="javascript:void(0)" data-slide="prev" data-target="#eventAlAUne">‹</a>
-        <a class="right carousel-control" href="javascript:void(0)" data-slide="next" data-target="#eventAlAUne">›</a>
-    </div>
-</div>
+                                <% if (j==1){ %>
+                                    <li data-target="#eventAlAUne" data-slide-to="${j-1}" class="active"></li>
+                                    <% }else{ %>
+                                        <li data-target="#eventAlAUne" data-slide-to="${j-1 }" class=""></li>
+                                        <%} %>
+                                            <%}%>
+                        </ol>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="javascript:void(0)" data-slide="prev" data-target="#eventAlAUne">‹</a>
+                        <a class="right carousel-control" href="javascript:void(0)" data-slide="next" data-target="#eventAlAUne">›</a>
+            </div>
+        </div>

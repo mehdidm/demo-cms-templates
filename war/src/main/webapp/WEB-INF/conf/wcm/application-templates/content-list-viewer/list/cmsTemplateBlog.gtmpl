@@ -1,0 +1,482 @@
+<%
+	 	import javax.jcr.Node;
+
+	 	import org.exoplatform.wcm.webui.paginator.UICustomizeablePaginator;
+	 	import org.exoplatform.wcm.webui.clv.UICLVPortlet;
+	 	import org.exoplatform.wcm.webui.Utils;
+	 	import org.exoplatform.services.wcm.core.NodeLocation;
+	 	import org.exoplatform.services.jcr.core.ManageableRepository;
+	 	import org.exoplatform.webui.application.WebuiRequestContext;
+	 	import org.exoplatform.services.wcm.utils.WCMCoreUtils;
+	 	import org.exoplatform.services.cms.comments.CommentsService;
+
+	 	def propertyName = "exo:title";
+	 	def repo = "";
+	 	def workspace = "";
+	 	def uuid = "";
+
+	 	def siteName = org.exoplatform.portal.webui.util.Util.getPortalRequestContext().getPortalOwner();
+	 	Locale locale = WebuiRequestContext.getCurrentInstance().getLocale();
+	 	def language = locale.getLanguage();
+	 	def draftMsg = _ctx.appRes("PublicationStates.draft");
+	 	def publishedMsg = _ctx.appRes("PublicationStates.published");
+	 	def commentService = WCMCoreUtils.getService(CommentsService.class);
+	 	%>
+    <style>
+        .blogListBox .media-inner {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed #e7e7e7;
+        }
+        
+        .blogListBox .blogTitle {
+            width: 100%;
+            display: inline-flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .blogListBox h5 {
+            margin-top: 0;
+        }
+        
+        .blogListBox h5.title {
+            background: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .blogListBox .blogTitle .extra-wrap h3 {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: .5px;
+            color: #454545;
+            margin-top: 0px;
+            margin-left: 5px;
+            margin-bottom: 0;
+        }
+        
+        .blogListBox .blogInformations p {
+            margin-bottom: 0px;
+        }
+        
+        .blogListBox .badge {
+            background: transparent;
+            box-shadow: none;
+            padding-left: 0;
+            background: #476a9c;
+            color: #fff;
+            text-align: center;
+            padding: 0px 8px;
+            height: auto;
+            box-shadow: none;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            margin-bottom: 0;
+            align-items: center;
+            display: flex;
+            margin-right: 10px;
+        }
+        
+        .blogListBox .blogDate span {
+            display: block;
+        }
+        
+        .blogListBox .blogInformations {
+            display: inline-flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        
+        .blogListBox .blogNbrComments i {
+            font-size: 14px;
+        }
+        
+        .blogListBox .blogInformations i {
+            color: #ffcb08;
+        }
+        
+        .blogListBox .blogAuthor span {
+            font-size: 12px;
+            color: #383838;
+        }
+        
+        .blogListBox .blogAuthor a {
+            font-size: 12px;
+            color: #2b2b2b;
+            font-style: italic;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+        
+        .blogListBox .summary.margBot3 {
+            font-size: 13px;
+            letter-spacing: .1px;
+        }
+        
+        .blogListBox .blogAuthor i {
+            font-size: 14px;
+        }
+        
+        .blogListBox .blogImage {
+            flex: 1 1 30%;
+        }
+        
+        .blogListBox .media-body {
+            flex: 1 1 60%;
+            position: relative;
+        }
+        
+        .blogListBox .summary.margBot3 p {
+            font-size: 13px;
+            letter-spacing: .2px;
+        }
+        
+        .blogListBox .blog-button {
+            position: relative;
+            margin: auto;
+            padding: 5px 0px;
+            transition: all .2s ease;
+        }
+        
+        .blogListBox .blog-button:before {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            display: block;
+            border-radius: 28px;
+            background: rgb(71, 106, 156);
+            width: 20px;
+            height: 2px;
+            transition: all .3s ease;
+        }
+        
+        .blogListBox .blog-button span {
+            position: relative;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: .5px;
+            vertical-align: middle;
+            color: #385989;
+        }
+        
+        #Blog .blog-button:hover:before {
+            width: 100%;
+            background: #ffcb08;
+        }
+        
+        .blogListBox.blog-button:hover svg {
+            transform: translateX(0);
+            stroke: #ffcb08;
+        }
+        
+        .blogListBox .blog-button:active {
+            transform: scale(0.96);
+        }
+        
+        .blogListBox .blog-button:hover span {
+            color: #ffcb08;
+        }
+        
+        .blogListBox .blogImage a {
+            border: none;
+            box-shadow: none;
+        }
+        
+        .blogListBox .blogAuthor span {
+            font-size: 12px;
+        }
+        
+        .blogListBox .blogAuthor {
+            margin-right: 10px;
+        }
+        
+        .blogListBox .blogNbrComments a {
+            font-size: 13px;
+            color: #2d3138;
+        }
+        
+        .blogListBox .pagination.uiPageIterator {
+            text-align: center;
+        }
+        
+        .blogListBox .blogDate span {
+            font-size: 10px;
+            font-weight: normal;
+        }
+        
+        .blogListBox .blogDate {
+            margin-bottom: 0;
+        }
+        
+        .blogListBox .blogTitleLink {
+            color: #575757;
+        }
+        
+        .blogListBox .blogTitleLink:hover {
+            color: #ffcb08;
+        }
+        
+        .blogListBox {
+            box-shadow: none;
+        }
+        
+        @media (max-width: 767px) {
+            .home2-uiContentBox {
+                display: block;
+            }
+            .clv.uiBox.home2-blogBox {
+                padding-bottom: 20px;
+            }
+        }
+        /*--------------------responsive style ---------------------------------------*/
+        
+        @media (max-width: 767px) {
+            #Blog .BlogRightTDContainer,
+            #Blog .BlogLeftTDContainer {
+                width: 100%;
+                float: none;
+                display: block;
+            }
+            #Blog #BlogRight {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            #Blog #BlogLeft {
+                margin-right: 0px;
+            }
+        }
+        
+        @media (max-width: 550px) {
+            .blogListBox .blogImage {
+                flex: 1 1 100%;
+            }
+            .blogListBox .blogImage a {
+                margin-right: 0;
+            }
+        }
+        
+        #newsList,
+        #eventsList {
+            margin: 30px;
+        }
+    </style>
+    <div class="documentsCLVTemplate" id="$uicomponent.id">
+
+        <div class="clv uiBox blogListBox">
+            <%
+	 	def header = uicomponent.getHeader();
+	 	def rssLink = uicomponent.getRssLink();
+	 	def isShowRssLink = uicomponent.isShowRssLink();
+	 	def isShowHeader = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_HEADER) && header != null && header.trim().length() != 0;
+	 	%>
+                <%
+	 	if (isShowHeader || isShowRssLink) {
+	 		%>
+                    <h5 class="title">
+                        <%if (isShowRssLink) {
+	 			%><a class="rssIcon pull-right" onclick="javascript:window.open('$rssLink');" style="cursor:pointer" rel="tooltip" data-placement="bottom" title="<%= _ctx.appRes(" UICLVPresentation.label.rssFeed ") %>"><i class="uiIconRss uiIconLightGray">&nbsp;</i></a>
+                            <%
+	 		}
+	 		if(isShowHeader) {%>
+                                <span>$header</span>
+                                <%}%>
+                    </h5>
+                    <%
+	 	}
+	 	%>
+                        <%
+	 	if (uicomponent.getUIPageIterator().getAvailable() == 0) {
+	 		%>
+                            <div class="emptyContent">
+                                <span><%= _ctx.appRes(uicomponent.getParent().getMessageKey()) %></span>
+                            </div>
+                            <%
+	 	} else {
+	 		def currentPageData = uicomponent.getCurrentPageData();
+	 		def i=0;
+	 		%>
+                                <div class="uiContentBox">
+                                    <%
+	 		for (viewNode in currentPageData) {
+	 			if(!Utils.isViewable(viewNode)) continue;
+	 			i++;
+	 			def isShowTitle = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_TITLE);
+	 			def isShowDate = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_DATE_CREATED);
+	 			def isShowLink = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_LINK);
+	 			def isShowReadmore = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_READMORE);
+
+	 			def itemLink = uicomponent.getURL(viewNode);
+	 			def itemWebdavLink = uicomponent.getWebdavURL(viewNode);
+	 			uicomponent.setDateTimeFormat("dd/MMM/yyyy");
+	 			def itemDateCreated = uicomponent.getCreatedDate(viewNode);
+	 			int slashIndex1 = itemDateCreated.indexOf('/');
+	 			int slashIndex2 = itemDateCreated.lastIndexOf('/');
+	 			def itemCreatedDay = itemDateCreated.substring(0, slashIndex1);
+	 			def itemCreatedMonth = itemDateCreated.substring(slashIndex1 + 1, slashIndex2);
+	 			def itemOwner = uicomponent.getAuthor(viewNode);
+
+	 			def imgSrc = uicomponent.getIllustrativeImage(viewNode);
+	 			def isShowImage = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_ILLUSTRATION) && imgSrc != null;
+
+	 			def itemName = viewNode.getName();
+	 			def itemTitle = uicomponent.getTitle(viewNode);
+	 			if (itemTitle != null && itemTitle.trim().length() != 0)
+	 				itemName = itemTitle;
+
+	 			def itemSummary = uicomponent.getSummary(viewNode);
+	 			def itemSummaryField = uicomponent.getSummaryField(viewNode);
+	 			def isShowSummary = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_SUMMARY) && itemSummary != null;
+
+	 			def itemIcon = uicomponent.getContentIcon(viewNode);
+
+	 			repo = ((ManageableRepository)viewNode.getSession().getRepository()).getConfiguration().getName();
+	 			workspace = viewNode.getSession().getWorkspace().getName();
+	 			uuid = viewNode.getUUID();
+	 			def commentCount = commentService.getComments(viewNode, null).size();
+
+	 			%>
+                                        <%=uicomponent.addQuickEditDiv("Column1 media " + ((i%2==1)?"odd":"even"),, viewNode)%>
+
+                                            <div class="media-inner">
+                                                <%
+	 			if (isShowImage) {
+	 				%>
+                                                    <div class="blogImage">
+                                                        <a class="image pull-left img-polaroid" title="$itemName"><img alt="$itemName" rel="tooltip" data-placement="bottom" title="$itemName" src="$imgSrc" /></a>
+                                                    </div>
+                                                    <%
+	 			}
+	 			%>
+
+                                                        <div class="media-body">
+                                                            <div class="clearfix blogTitle">
+                                                                <div class="badge">
+                                                                    <p class="blogDate">
+                                                                        <span><time datetime="2013-01-01">$itemCreatedDay</time></span><span class="numb">$itemCreatedMonth</span>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="extra-wrap">
+                                                                    <%
+
+				 			if (uicomponent.isViewMode()){
+				 				if (isShowTitle) {
+				 					%>
+                                                                        <%
+				 					if (isShowLink) {
+				 						%>
+                                                                            <h3 class=""><a href="$itemLink" rel="tooltip" data-placement="bottom" title="$itemName" class="blogTitleLink">$itemName</a></h3>
+                                                                            <%
+				 					} else {
+				 						%>
+                                                                                <h3 class="">
+                                                                                    <% print uicomponent.getInlineEditingField(viewNode, "exo:title", itemName, "TEXT", "CLVTitle_"+String.valueOf(i), "GroovyCLVTitle", true, "button_direction=left-to-right","fast_publish=" + uicomponent.getFastPublicLink(viewNode));%>
+                                                                                </h3>
+                                                                                <%
+				 					}
+				 				}
+				 			}
+				 			else {
+				 				if (isShowTitle) {
+				 					%>
+                                                                                    <%
+				 					if (isShowLink) {
+				 						%>
+                                                                                        <h3 class=" WCMInlineEditable" contenteditable="true" propertyName="<%=propertyName%>" repo="<%=repo%>" workspace="<%=workspace%>" uuid="<%=uuid%>" siteName="<%=siteName%>" language="<%=language%>" publishedmsg="<%=publishedMsg%>" draftmsg="<%=draftMsg%>"
+                                                                                            fastpublishlink="<%=uicomponent.getFastPublicLink(viewNode)%>"><a href="$itemLink" rel="tooltip" data-placement="bottom" title="$itemName">$itemName</a></h3>
+                                                                                        <%
+				 					} else {
+				 						%>
+                                                                                            <h3 class=" WCMInlineEditable" contenteditable="true" propertyName="<%=propertyName%>" repo="<%=repo%>" workspace="<%=workspace%>" uuid="<%=uuid%>" siteName="<%=siteName%>" language="<%=language%>" publishedmsg="<%=publishedMsg%>" draftmsg="<%=draftMsg%>"
+                                                                                                fastpublishlink="<%=uicomponent.getFastPublicLink(viewNode)%>">
+                                                                                                <% print uicomponent.getInlineEditingField(viewNode, "exo:title", itemName, "TEXT", "CLVTitle_"+String.valueOf(i), "GroovyCLVTitle", true, "button_direction=left-to-right","fast_publish=" + uicomponent.getFastPublicLink(viewNode)); %>
+                                                                                            </h3>
+                                                                                            <%
+				 					}
+				 				}
+				 			}
+
+				 			%>
+                                                                                                <div class="blogInformations">
+                                                                                                    <p class="blogAuthor"><i class="uiIconProfile uiIconDefaultApp"></i> <span>Posted by:&nbsp;</span> <a href="#">$itemOwner</a></p>
+                                                                                                    <p class="blogNbrComments"><i class="uiIconAppforum uiIconAppForumPortlet uiIconDefaultApp"></i> <a href="#">$commentCount Comment(s)</a></p>
+                                                                                                </div>
+
+                                                                </div>
+                                                            </div>
+
+
+                                                            <%
+
+	 			if (isShowDate) {
+	 				%>
+                                                                <div class="dateAndMail">$itemDateCreated</div>
+                                                                <%
+	 			}
+	 			if (isShowSummary) {
+	 				%>
+                                                                    <div class="summary margBot3" id="Blogexcerpt">
+                                                                        <%
+	 				if (itemSummaryField!=null) {
+	 					print uicomponent.getInlineEditingField(viewNode, itemSummaryField, itemSummary, "TEXTAREA", "Text_"+String.valueOf(i), "CLV1ColumnPresent", true,"fast_publish=" + uicomponent.getFastPublicLink(viewNode));
+	 				}
+	 				%>
+                                                                    </div>
+                                                                    <%
+	 			}%>
+
+                                                                        <%
+	 			if (isShowReadmore) {
+	 				%>
+
+                                                                            <div class="readLink blog-read-more">
+                                                                                <a class="blog-button" href="$itemLink" data-placement="bottom" title="<%= _ctx.appRes(" UICLVPresentation.label.readmore ") %>">
+                                                                                    <span><%= _ctx.appRes("UICLVPresentation.label.readmore") %></span>
+                                                                                </a>
+
+                                                                            </div>
+                                                                            <%
+	 			}
+	 			%>
+                                                        </div>
+                                                        <!--media-body-->
+                                            </div>
+                                            <!--media-inner-->
+                                </div>
+                                <%
+	 		}
+	 		%>
+
+                                    <%
+	 		String labelRefreshAction = _ctx.appRes("UICLVPresentation.action.refresh");
+	 		def isShowRefresh = uicomponent.isShowField(UICLVPortlet.PREFERENCE_SHOW_REFRESH_BUTTON);
+	 		if (isShowRefresh) { %>
+                                        <div class="captionFunc clearfix">
+                                            <%	String link = uicomponent.event("Refresh");
+	 			%>
+                                                <div class="captionRefresh pull-left">
+                                                    <a href="$link" class="btn" rel="tooltip" data-placement="bottom" title="$labelRefreshAction"></a>
+                                                </div>
+                                        </div>
+                                        <%
+	 		}
+	 		if (uicomponent.showPaginator()) { %>
+                                            <div class="paginatorDefault">
+                                                <%	uicomponent.renderChild(UICustomizeablePaginator.class); %>
+                                            </div>
+                                            <%
+	 		}
+	 		%>
+
+        </div>
+        <!--uiContentBox-->
+        <%
+	 	}
+	 	%>
+    </div>
+    </div>
