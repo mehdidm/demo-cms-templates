@@ -21,13 +21,12 @@
 	</parent>
 	<groupId>org.exoplatform.addons.demo</groupId>
 	<artifactId>demo-cms-templates</artifactId>
-	<version>1.0.x-SNAPSHOT</version>
+	<version>1.1.x-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>eXo Add-on:: Demo CMS Templates</name>
 	<description>A set of Content and page templates</description>
 	<modules>
 		<module>war</module>
-		<module>services</module>
 		<module>packaging</module>
 	</modules>
 	<scm>
@@ -37,7 +36,7 @@
 		<tag>HEAD</tag>
 	</scm>
 	<properties>
-		<platform.version>5.2.0</platform.version>
+		<platform.version>5.3.0</platform.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
