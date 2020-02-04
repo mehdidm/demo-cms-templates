@@ -1,0 +1,43 @@
+.RightBodyTDContainer .UIContainer {
+    padding: 55px 25px;
+}
+
+.UIPresentationContainer {
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    padding: 25px;
+}
+
+.UISingleContentViewerPortlet .UIPresentationContainer .uiOptionBar {
+    margin-right: 1270px;
+    margin-left: 10px;
+}
+
+.UISingleContentViewerPortlet .UIPresentationContainer .title {
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    color: #FFC20E;
+    text-transform: uppercase;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+
+.UISingleContentViewerPortlet .UIPresentationContainer .dateAndMail {
+    text-align: right;
+    font-style: italic;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.webContentContainer {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-right: 50px;
+}
